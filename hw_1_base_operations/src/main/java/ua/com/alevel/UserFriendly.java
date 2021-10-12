@@ -6,21 +6,27 @@ import java.io.InputStreamReader;
 
 public class UserFriendly {
     public static void main(String[] args) {
+        System.out.println("Здравствуйте!");
+        System.out.println("Для выбора задания следует нажать: ");
+        System.out.println("1 - Подсчёт суммы цифр в строке");
+        System.out.println("2 - Подсчёт суммы букв в строке");
+        System.out.println("3 - Информация об окончании уроков");
+        System.out.println("0 - выход с программы");
         BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
         String event;
         try {
             while ((event = reader.readLine()) != null) {
                 switch (event) {
                     case "1": {
-                        new School();
-                    }
-                    break;
-                    case "2": {
                         new NumberCalculate();
                     }
                     break;
-                    case "3": {
+                    case "2": {
                         new CharCalculate();
+                    }
+                    break;
+                    case "3": {
+                        new School();
                     }
                     break;
                     case "0": {

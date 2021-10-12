@@ -4,7 +4,7 @@ import java.util.Scanner;
 
 public class NumberCalculate {
     public NumberCalculate() {
-        System.out.println("Print : ");
+        System.out.println("Печатайте: ");
         Scanner h = new Scanner(System.in);
         String s1 = h.nextLine();
         char[] ch = s1.toCharArray();

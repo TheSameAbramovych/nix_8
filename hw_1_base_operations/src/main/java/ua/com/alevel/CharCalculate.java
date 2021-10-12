@@ -6,7 +6,7 @@ import java.util.Scanner;
 public class CharCalculate {
     public CharCalculate() {
 
-        System.out.print("Print: ");
+        System.out.print("Печатайте: ");
         Scanner g = new Scanner(System.in);
         String h = g.nextLine();
 
