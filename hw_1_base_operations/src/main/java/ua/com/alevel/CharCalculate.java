@@ -28,6 +28,10 @@ public class CharCalculate {
                 }
             }
         }
-        System.out.println(++index + ". " + symbol + ": " + count);
+        if (Character.isAlphabetic(symbol)) {
+            System.out.println(++index + ". " + symbol + ": " + count);
+        } else {
+            System.out.println("Вы ввели только цифры");
+        }
     }
 }
