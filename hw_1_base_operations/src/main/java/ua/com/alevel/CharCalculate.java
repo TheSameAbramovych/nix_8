@@ -22,16 +22,16 @@ public class CharCalculate {
                 if (ch[i] == symbol) {
                     count++;
                 } else {
-                    System.out.println(++index + ". " + symbol + ": " + count);
                     count = 1;
                     symbol = ch[i];
+                    System.out.println(++index + ". " + symbol + ": " + count);
                 }
             }
         }
         if (Character.isAlphabetic(symbol)) {
             System.out.println(++index + ". " + symbol + ": " + count);
         } else {
-            System.out.println("Вы ввели только цифры");
+            System.out.println("Вы ввели только цифры!");
         }
     }
 }
