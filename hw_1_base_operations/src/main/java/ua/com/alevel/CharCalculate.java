@@ -9,29 +9,32 @@ public class CharCalculate {
         System.out.print("Печатайте: ");
         Scanner g = new Scanner(System.in);
         String h = g.nextLine();
-
         char[] ch = h.toCharArray();
-        Arrays.sort(ch);
 
-        char symbol = ch[0];
+        Arrays.sort(ch);
         int len = ch.length;
-        int index = 0;
-        int count = 0;
-        for (int i = 0; i < len; i++) {
-            if (Character.isAlphabetic(ch[i])) {
-                if (ch[i] == symbol) {
-                    count++;
-                } else {
-                    count = 1;
-                    symbol = ch[i];
-                    System.out.println(++index + ". " + symbol + ": " + count);
+        if (len < 2) {
+            System.out.println("Введите больше одного значения!");
+        } else {
+            int index = 0;
+            int count = 0;
+            char symbol = ch[len - 1];
+            for (int i = len - 1; i >= 0; i--) {
+                if (Character.isLetter(ch[i])) {
+                    if (ch[i] == symbol) {
+                        count++;
+                    } else {
+                        System.out.println(++index + ". " + symbol + ": " + count);
+                        count = 1;
+                        symbol = ch[i];
+                    }
                 }
             }
-        }
-        if (Character.isAlphabetic(symbol)) {
-            System.out.println(++index + ". " + symbol + ": " + count);
-        } else {
-            System.out.println("Вы ввели только цифры!");
+            if (Character.isLetter(symbol)) {
+                System.out.println(++index + ". " + symbol + ": " + count);
+            } else {
+                System.out.println("Вы ввели только цифры!");
+            }
         }
     }
 }
