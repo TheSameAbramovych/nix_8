@@ -17,21 +17,10 @@ public class UserFriendly {
         try {
             while ((event = reader.readLine()) != null) {
                 switch (event) {
-                    case "1": {
-                        new NumberCalculate();
-                    }
-                    break;
-                    case "2": {
-                        new CharCalculate();
-                    }
-                    break;
-                    case "3": {
-                        new School();
-                    }
-                    break;
-                    case "0": {
-                        System.exit(0);
-                    }
+                    case "1" -> new NumberCalculate();
+                    case "2" -> new CharCalculate();
+                    case "3" -> new School();
+                    case "0" -> System.exit(0);
                 }
             }
         } catch (IOException e) {
