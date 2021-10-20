@@ -21,19 +21,6 @@
         <maven.jar.plugin.version>3.2.0</maven.jar.plugin.version>
     </properties>
 
-    <dependencies>
-        <dependency>
-            <groupId>org.apache.commons</groupId>
-            <artifactId>commons-lang3</artifactId>
-            <version>${commons.lang3.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>ua.com.alevel</groupId>
-            <artifactId>reversestring</artifactId>
-            <version>${reversestring.version}</version>
-        </dependency>
-    </dependencies>
-
     <build>
         <finalName>hw_2_strings</finalName>
         <plugins>
