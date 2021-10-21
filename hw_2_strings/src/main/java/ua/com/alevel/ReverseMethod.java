@@ -27,9 +27,13 @@ public class ReverseMethod {
             if (arrStr.length == 3) {
                 String firstS = arrStr[1].strip();
                 String secondS = arrStr[2].strip();
+                int first = Integer.parseInt(firstS);
+                int last = Integer.parseInt(secondS);
                 if (firstS.chars().allMatch(Character::isDigit)
-                        && secondS.chars().allMatch(Character::isDigit)) {
-                    out = reverse(arrStr[0], Integer.parseInt(firstS), Integer.parseInt(secondS));
+                        && secondS.chars().allMatch(Character::isDigit)
+                        && first < last && first < str.length()
+                        && last < arrStr.length) {
+                    out = reverse(arrStr[0], first, last);
                 }
             }
 
