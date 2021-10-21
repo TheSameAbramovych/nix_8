@@ -12,7 +12,6 @@
         <module>hw_1_base_operations</module>
         <module>hw_2_strings</module>
         <module>hw_3_start_oop</module>
-        <module>hw_3_start_oop</module>
     </modules>
 
     <packaging>pom</packaging>
