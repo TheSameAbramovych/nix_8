@@ -31,7 +31,7 @@ public class ReverseMethod {
                         && secondS.chars().allMatch(Character::isDigit)
                         && Integer.parseInt(firstS) < Integer.parseInt(secondS)
                         && Integer.parseInt(firstS) < str.length()
-                        && Integer.parseInt(secondS) < arrStr.length) {
+                        && Integer.parseInt(secondS) < str.length()) {
                     out = reverse(arrStr[0], Integer.parseInt(firstS), Integer.parseInt(secondS));
                 }
             }
