@@ -6,7 +6,6 @@ import ua.com.alevel.service.UserService;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
-import java.util.List;
 
 public class UserController {
 
@@ -14,7 +13,8 @@ public class UserController {
 
     public void run() {
         BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
-        System.out.println("select your option");
+        System.out.println();
+        System.out.println("Выбирай : ");
         String position;
         try {
             runNavigation();
@@ -32,62 +32,51 @@ public class UserController {
     }
 
     private void runNavigation() {
-        System.out.println();
-        System.out.println("if you want create user, please enter 1");
-        System.out.println("if you want update user, please enter 2");
-        System.out.println("if you want delete user, please enter 3");
-        System.out.println("if you want findById user, please enter 4");
-        System.out.println("if you want findAll user, please enter 5");
-        System.out.println("if you want exit, please enter 0");
+        System.out.println("Создать юзер -> 1");
+        System.out.println("Изменить данные юзера -> 2");
+        System.out.println("Удалить юзер -> 3");
+        System.out.println("Найти юзер по Id -> 4");
+        System.out.println("Список всех юзеров -> 5");
+        System.out.println("Выход -> 0");
         System.out.println();
     }
 
     private void crud(String position, BufferedReader reader) {
         switch (position) {
-            case "1":
-                create(reader);
-                break;
-            case "2":
-                update(reader);
-                break;
-            case "3":
-                delete(reader);
-                break;
-            case "4":
-                findById(reader);
-                break;
-            case "5":
-                findAll(reader);
-                break;
+            case "1" -> create(reader);
+            case "2" -> update(reader);
+            case "3" -> delete(reader);
+            case "4" -> findById(reader);
+            case "5" -> findAll(reader);
         }
         runNavigation();
     }
 
     private void create(BufferedReader reader) {
-        System.out.println("UserController.create");
         try {
-            System.out.println("Please, enter your name");
+            System.out.println("UserController.create");
+            System.out.print("Имя: ");
             String name = reader.readLine();
-            System.out.println("Please, enter your age");
+            System.out.print("Возраст: ");
             String ageString = reader.readLine();
             int age = Integer.parseInt(ageString);
             User user = new User();
             user.setAge(age);
             user.setName(name);
             userService.create(user);
-        } catch (IOException e) {
-            System.out.println("problem: = " + e.getMessage());
+        } catch (Exception e) {
+            System.out.println("Проблемка : " + e.getMessage());
         }
     }
 
     private void update(BufferedReader reader) {
-        System.out.println("UserController.update");
         try {
-            System.out.println("Please, enter id");
+            System.out.println("UserController.update");
+            System.out.print("Введи id: ");
             String id = reader.readLine();
-            System.out.println("Please, enter your name");
+            System.out.print("Имя: ");
             String name = reader.readLine();
-            System.out.println("Please, enter your age");
+            System.out.print("Возраст: ");
             String ageString = reader.readLine();
             int age = Integer.parseInt(ageString);
             User user = new User();
@@ -96,42 +85,42 @@ public class UserController {
             user.setName(name);
             userService.update(user);
         } catch (IOException e) {
-            System.out.println("problem: = " + e.getMessage());
+            System.out.println("Проблемка : " + e.getMessage());
         }
     }
 
     private void delete(BufferedReader reader) {
         System.out.println("UserController.delete");
         try {
-            System.out.println("Please, enter id");
+            System.out.print("Введите id: ");
             String id = reader.readLine();
             userService.delete(id);
         } catch (IOException e) {
-            System.out.println("problem: = " + e.getMessage());
+            System.out.println("Проблемка : " + e.getMessage());
         }
     }
 
     private void findById(BufferedReader reader) {
         System.out.println("UserController.findById");
         try {
-            System.out.println("Please, enter id");
+            System.out.print("Введите id: ");
             String id = reader.readLine();
             User user = userService.findById(id);
-            System.out.println("user = " + user);
+            System.out.println("Юзер = " + user);
         } catch (IOException e) {
-            System.out.println("problem: = " + e.getMessage());
+            System.out.println("Проблемка : " + e.getMessage());
         }
     }
 
     private void findAll(BufferedReader reader) {
         System.out.println("UserController.findAll");
-        List<User> users = userService.findAll();
-        if (users != null && users.size() != 0) {
+        User[] users = userService.findAll();
+        if (users != null && users.length != 0) {
             for (User user : users) {
-                System.out.println("user = " + user);
+                System.out.println("Юзер = " + user);
             }
         } else {
-            System.out.println("users empty");
+            System.out.println("Список пуст");
         }
     }
 }

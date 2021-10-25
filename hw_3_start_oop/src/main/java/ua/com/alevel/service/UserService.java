@@ -3,8 +3,6 @@ package ua.com.alevel.service;
 import ua.com.alevel.dao.UserDao;
 import ua.com.alevel.entity.User;
 
-import java.util.List;
-
 public class UserService {
 
     private final UserDao userDao = new UserDao();
@@ -25,7 +23,7 @@ public class UserService {
         return userDao.findById(id);
     }
 
-    public List<User> findAll() {
+    public User[] findAll() {
         return userDao.findAll();
     }
 }
