@@ -6,6 +6,7 @@ import java.util.Objects;
 import java.util.UUID;
 
 public class UserDB {
+
     private static UserDB instance;
 
     private int pointer;

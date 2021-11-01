@@ -3,6 +3,7 @@ package ua.com.alevel;
 import java.util.Scanner;
 
 public class School {
+
     public School() {
         System.out.print("Введите номер урока: ");
         Scanner h = new Scanner(System.in);

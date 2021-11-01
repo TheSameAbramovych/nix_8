@@ -5,6 +5,7 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 
 public class UserFriendly {
+
     public static void main(String[] args) {
         System.out.println("Здравствуйте!");
         System.out.println("Для выбора задания следует нажать: ");
@@ -28,4 +29,3 @@ public class UserFriendly {
         }
     }
 }
-

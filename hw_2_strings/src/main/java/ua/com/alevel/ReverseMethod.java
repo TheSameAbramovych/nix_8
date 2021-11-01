@@ -4,6 +4,7 @@ import java.util.Objects;
 import java.util.Scanner;
 
 public class ReverseMethod {
+
     public static void main(String[] args) {
         System.out.println("Вас приветствует метод Reverse");
         System.out.println("Простой реверс -> текст");
