@@ -18,7 +18,10 @@ public class HorseGame {
         int x1 = Integer.parseInt(arrayStr[0]);
         int y1 = Integer.parseInt(arrayStr[1]);
 
-        if ((x1 == x + 1 && y1 == y + 2) || (x1 == x + 2 && y1 == y + 1)) {
+        if ((x1 == x + 1 && y1 == y + 2)
+                || (x1 == x + 2 && y1 == y + 1)
+                || (x1 == x - 1 && y1 == y - 2)
+                || (x1 == x - 2 && y1 == y - 1)) {
             System.out.println("True");
         } else {
             System.out.println("False");
