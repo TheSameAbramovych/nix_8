@@ -12,6 +12,9 @@
         <module>hw_1_base_operations</module>
         <module>hw_2_strings</module>
         <module>hw_3_start_oop</module>
+        <module>unit_6_di_oop</module>
+        <module>dinix_framework</module>
+        <module>my_experiments</module>
     </modules>
 
     <packaging>pom</packaging>
