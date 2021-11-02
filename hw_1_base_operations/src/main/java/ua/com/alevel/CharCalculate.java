@@ -6,6 +6,7 @@ import java.util.Scanner;
 import java.util.stream.IntStream;
 
 public class CharCalculate {
+
     public CharCalculate() {
         System.out.print("Печатайте: ");
         Scanner g = new Scanner(System.in);

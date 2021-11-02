@@ -3,6 +3,7 @@ package ua.com.alevel;
 import java.util.Scanner;
 
 public class NumberCalculate {
+
     public NumberCalculate() {
         System.out.println("Печатайте: ");
         Scanner h = new Scanner(System.in);
