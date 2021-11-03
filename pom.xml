@@ -14,7 +14,8 @@
         <module>hw_3_start_oop</module>
         <module>unit_6_di_oop</module>
         <module>dinix_framework</module>
-        <module>my_experiments</module>
+        <module>module_1</module>
+
     </modules>
 
     <packaging>pom</packaging>
