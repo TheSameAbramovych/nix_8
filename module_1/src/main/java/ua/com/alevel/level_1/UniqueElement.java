@@ -1,22 +1,16 @@
 package ua.com.alevel.level_1;
 
+import ua.com.alevel.helper.IOHelper;
+
 import java.util.Arrays;
-import java.util.Scanner;
 
 public class UniqueElement {
 
     public UniqueElement() {
-        System.out.println("Print:");
-        Scanner scan = new Scanner(System.in);
-        String str = scan.nextLine();
-        String[] arrStr = str.split(",");
-        int[] array = new int[arrStr.length];
+        System.out.println("Enter elements separating with a comma, without spaces:");
+        int[] array = IOHelper.readIntArray();
         int numberOfElements = 0;
         Arrays.sort(array);
-
-        for (int i = 0; i < arrStr.length; i++) {
-            array[i] = Integer.parseInt(arrStr[i]);
-        }
 
         for (int i = 0; i < array.length; i++) {
             if (i + 1 != array.length) {

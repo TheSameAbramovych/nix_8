@@ -1,22 +1,22 @@
 package ua.com.alevel.level_1;
 
-import java.util.Scanner;
+import ua.com.alevel.helper.IOHelper;
 
 public class TriangleArea {
 
     public TriangleArea() {
-        System.out.println("Print coordinate dot A: ");
-        int[] array = readDot();
+        System.out.print("Enter coordinate dot A x,y : ");
+        int[] array = IOHelper.readIntArray();
         int x1 = array[0];
         int y1 = array[1];
 
-        System.out.println("Print coordinate dot B: ");
-        array = readDot();
+        System.out.print("Enter coordinate dot B x,y : ");
+        array = IOHelper.readIntArray();
         int x2 = array[0];
         int y2 = array[1];
 
-        System.out.println("Print coordinate dot C: ");
-        array = readDot();
+        System.out.print("Enter coordinate dot C x,y : ");
+        array = IOHelper.readIntArray();
         int x3 = array[0];
         int y3 = array[1];
 
@@ -24,17 +24,5 @@ public class TriangleArea {
         System.out.println("Square triangular = " + square);
     }
 
-    public int[] readDot() {
-        Scanner scan = new Scanner(System.in);
-        String str = scan.nextLine();
-
-        String[] arrStr = str.split(",");
-        int[] array = new int[arrStr.length];
-
-        for (int i = 0; i < arrStr.length; i++) {
-            array[i] = Integer.parseInt(arrStr[i]);
-        }
-        return array;
-    }
 
 }
