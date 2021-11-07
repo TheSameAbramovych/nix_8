@@ -3,8 +3,8 @@ package ua.com.alevel.helper;
 import java.util.Scanner;
 
 public final class IOHelper {
-    private IOHelper() {
-    }
+
+    private IOHelper() { }
 
     public static int[] readIntArray() {
         Scanner scan = new Scanner(System.in);
@@ -18,5 +18,4 @@ public final class IOHelper {
         }
         return array;
     }
-
 }

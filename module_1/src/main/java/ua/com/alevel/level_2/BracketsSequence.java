@@ -5,6 +5,7 @@ import java.util.List;
 import java.util.Scanner;
 
 public class BracketsSequence {
+
     public BracketsSequence() {
         Scanner scanner = new Scanner(System.in);
         String tmp = scanner.nextLine();
