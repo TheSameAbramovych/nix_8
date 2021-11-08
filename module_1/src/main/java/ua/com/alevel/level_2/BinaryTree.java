@@ -1,6 +1,7 @@
 package ua.com.alevel.level_2;
 
 public class BinaryTree {
+
     public BinaryTree() {
         TreeNode root = new TreeNode(1);
         root.left = new TreeNode(2);
@@ -31,5 +32,4 @@ public class BinaryTree {
         int rightDepth = maxDepth(root.right);
         return leftDepth > rightDepth ? leftDepth + 1 : rightDepth + 1;
     }
-
 }

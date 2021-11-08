@@ -27,5 +27,4 @@ public class TriangleArea {
             System.out.println("Incorrect input!");
         }
     }
-
 }

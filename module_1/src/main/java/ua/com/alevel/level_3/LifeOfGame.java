@@ -3,6 +3,7 @@ package ua.com.alevel.level_3;
 import java.util.Random;
 
 public class LifeOfGame {
+
     private static final int MAX_NEIGHBOR_DISTANCE = 1;
     private static final int MAX_WORLD_SIZE = 10;
     private static final int MIN_WORLD_SIZE = 5;
