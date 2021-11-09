@@ -1,13 +1,21 @@
 package ua.com.alevel;
 
 import org.apache.commons.lang3.StringUtils;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import java.util.List;
 import java.util.stream.Collectors;
 
 public class EntityService {
 
+    //    Logger logger = LoggerFactory.getLogger(EntityService.class);
+    Logger loggerError = LoggerFactory.getLogger("error");
+    Logger loggerWarn = LoggerFactory.getLogger("warn");
+    Logger loggerInfo = LoggerFactory.getLogger("info");
+
     public void create(EntityCreateDto dto) {
+        loggerInfo.info("start create user: " + dto.getEmail());
         if (StringUtils.isNotBlank(dto.getEmail())) {
             if (!EntityDao.getInstance().existByEmail(dto.getEmail())) {
                 Entity entity = new Entity();

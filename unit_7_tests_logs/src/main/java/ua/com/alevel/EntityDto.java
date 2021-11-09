@@ -48,4 +48,14 @@ public class EntityDto {
     public void setCreated(Long created) {
         this.created = created;
     }
+
+    @Override
+    public String toString() {
+        return "EntityDto{" +
+                "id='" + id + '\'' +
+                ", email='" + email + '\'' +
+                ", fullName='" + fullName + '\'' +
+                ", created=" + created +
+                '}';
+    }
 }

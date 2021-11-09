@@ -16,10 +16,51 @@
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <junit.version>4.13.1</junit.version>
         <junit.jupiter.version>5.7.0</junit.jupiter.version>
+        <slf4j.version>1.7.30</slf4j.version>
+        <logback.version>1.2.3</logback.version>
         <maven.shade.plugin.version>3.2.0</maven.shade.plugin.version>
         <maven.compiler.plugin.version>3.8.1</maven.compiler.plugin.version>
         <maven.surefire.plugin.version>2.22.2</maven.surefire.plugin.version>
+
+        <logs.folder>logs</logs.folder>
+        <logs.archived.folder>archived</logs.archived.folder>
+        <logs.local.folder>local</logs.local.folder>
+        <logs.prod.folder>prod</logs.prod.folder>
+        <logs.dev.folder>dev</logs.dev.folder>
     </properties>
+
+    <profiles>
+        <profile>
+            <id>local</id>
+            <activation>
+                <activeByDefault>true</activeByDefault>
+            </activation>
+            <properties>
+                <log.path>${logs.folder}/${logs.local.folder}</log.path>
+                <log.info>${log.path}/info.log</log.info>
+                <log.warn>${log.path}/warn.log</log.warn>
+                <log.error>${log.path}/error.log</log.error>
+            </properties>
+        </profile>
+        <profile>
+            <id>prod</id>
+            <properties>
+                <log.path>${logs.folder}/${logs.prod.folder}</log.path>
+                <log.info>${log.path}/info.log</log.info>
+                <log.warn>${log.path}/warn.log</log.warn>
+                <log.error>${log.path}/error.log</log.error>
+            </properties>
+        </profile>
+        <profile>
+            <id>dev</id>
+            <properties>
+                <log.path>${logs.folder}/${logs.dev.folder}</log.path>
+                <log.info>${log.path}/info.log</log.info>
+                <log.warn>${log.path}/warn.log</log.warn>
+                <log.error>${log.path}/error.log</log.error>
+            </properties>
+        </profile>
+    </profiles>
 
     <dependencies>
         <dependency>
@@ -30,7 +71,7 @@
         <dependency>
             <groupId>org.apache.commons</groupId>
             <artifactId>commons-lang3</artifactId>
-            <version>3.11</version>
+            <version>3.12.0</version>
         </dependency>
         <!-- JUNIT -->
         <dependency>
@@ -51,10 +92,33 @@
             <version>${junit.jupiter.version}</version>
             <scope>test</scope>
         </dependency>
+        <!-- LOGS -->
+        <dependency>
+            <groupId>org.slf4j</groupId>
+            <artifactId>slf4j-api</artifactId>
+            <version>${slf4j.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>ch.qos.logback</groupId>
+            <artifactId>logback-classic</artifactId>
+            <version>${logback.version}</version>
+            <scope>runtime</scope>
+        </dependency>
+        <dependency>
+            <groupId>ch.qos.logback</groupId>
+            <artifactId>logback-core</artifactId>
+            <version>${logback.version}</version>
+        </dependency>
     </dependencies>
 
     <build>
         <finalName>hw_7_tests_logs</finalName>
+        <resources>
+            <resource>
+                <directory>src/main/resources</directory>
+                <filtering>true</filtering>
+            </resource>
+        </resources>
         <plugins>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
@@ -66,8 +130,8 @@
                 <artifactId>maven-compiler-plugin</artifactId>
                 <version>${maven.compiler.plugin.version}</version>
                 <configuration>
-                    <source>16</source>
-                    <target>16</target>
+                    <source>${java.version}</source>
+                    <target>${java.version}</target>
                     <encoding>${project.build.sourceEncoding}</encoding>
                 </configuration>
             </plugin>
