@@ -1,7 +1,7 @@
-package ua.com.hw4;
+package ua.com.alevel;
 
-import ua.com.hw4.view.GroupController;
-import ua.com.hw4.view.StudentController;
+import ua.com.alevel.view.GroupController;
+import ua.com.alevel.view.StudentController;
 
 import java.io.BufferedReader;
 import java.io.IOException;

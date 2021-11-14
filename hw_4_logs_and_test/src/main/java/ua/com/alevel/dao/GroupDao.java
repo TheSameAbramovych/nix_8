@@ -1,9 +1,8 @@
-package ua.com.hw4.dao;
+package ua.com.alevel.dao;
 
 
-import ua.com.hw4.db.GroupDB;
-import ua.com.hw4.entity.Group;
-
+import ua.com.alevel.db.GroupDB;
+import ua.com.alevel.entity.Group;
 
 public class GroupDao {
 
@@ -26,6 +25,7 @@ public class GroupDao {
     public Group[] findAll() {
         return GroupDB.getInstance().findAll();
     }
+
 }
 
 

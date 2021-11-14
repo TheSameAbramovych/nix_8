@@ -1,6 +1,6 @@
-package ua.com.hw4.db;
+package ua.com.alevel.db;
 
-import ua.com.hw4.entity.Entity;
+import ua.com.alevel.entity.Entity;
 
 import java.util.Objects;
 import java.util.UUID;

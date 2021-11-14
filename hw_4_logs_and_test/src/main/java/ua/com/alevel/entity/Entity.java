@@ -1,4 +1,4 @@
-package ua.com.hw4.entity;
+package ua.com.alevel.entity;
 
 public abstract class Entity {
     private String id;

@@ -1,7 +1,7 @@
-package ua.com.hw4.service;
+package ua.com.alevel.service;
 
-import ua.com.hw4.dao.StudentDao;
-import ua.com.hw4.entity.Student;
+import ua.com.alevel.dao.StudentDao;
+import ua.com.alevel.entity.Student;
 
 public class StudentService {
 

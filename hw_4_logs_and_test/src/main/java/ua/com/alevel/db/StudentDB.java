@@ -1,6 +1,6 @@
-package ua.com.hw4.db;
+package ua.com.alevel.db;
 
-import ua.com.hw4.entity.Student;
+import ua.com.alevel.entity.Student;
 
 public class StudentDB extends DB<Student> {
 

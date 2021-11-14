@@ -1,15 +1,14 @@
-package ua.com.hw4.view;
+package ua.com.alevel.view;
 
-import ua.com.hw4.entity.Group;
-import ua.com.hw4.service.GroupService;
-import ua.com.hw4.utils.IOUtils;
+import ua.com.alevel.entity.Student;
+import ua.com.alevel.service.StudentService;
 
 import java.io.BufferedReader;
 import java.io.IOException;
 
-public class GroupController {
+public class StudentController {
 
-    private final GroupService groupService = new GroupService();
+    private final StudentService studentService = new StudentService();
 
     public void run(BufferedReader reader) {
         System.out.println();
@@ -30,11 +29,11 @@ public class GroupController {
     }
 
     private void runNavigation() {
-        System.out.println("Создать групу -> 1");
-        System.out.println("Изменить данные групы -> 2");
-        System.out.println("Удалить групу -> 3");
-        System.out.println("Найти групу по Id -> 4");
-        System.out.println("Список всех груп -> 5");
+        System.out.println("Создать студента -> 1");
+        System.out.println("Изменить данные студента -> 2");
+        System.out.println("Удалить студента -> 3");
+        System.out.println("Найти студента по Id -> 4");
+        System.out.println("Список всех студентов -> 5");
         System.out.println("Назад -> 0");
         System.out.println();
     }
@@ -51,76 +50,70 @@ public class GroupController {
 
     private void create(BufferedReader reader) {
         try {
-            Group group = new Group();
-            System.out.println("GroupController.create");
-
+            System.out.println("StudentController.create");
             System.out.print("Имя: ");
             String name = reader.readLine();
-            group.setName(name);
-
-            System.out.print("Староста: ");
-            String headManId = reader.readLine();
-            group.setHeadman(headManId);
-
-            System.out.print("Студенты: ");
-            for (String studentId : IOUtils.readStringArray()) {
-                if (!studentId.isEmpty()) {
-                    group.addStudentId(studentId);
-                }
-            }
-
-            groupService.create(group);
+            System.out.print("Возраст: ");
+            String ageString = reader.readLine();
+            int age = Integer.parseInt(ageString);
+            Student student = new Student();
+            student.setAge(age);
+            student.setName(name);
+            studentService.create(student);
         } catch (Exception e) {
             System.out.println("Проблемка : " + e.getMessage());
-            e.printStackTrace();
         }
     }
 
     private void update(BufferedReader reader) {
         try {
-            System.out.println("GroupController.update");
+            System.out.println("StudentController.update");
             System.out.print("Введи id: ");
             String id = reader.readLine();
             System.out.print("Имя: ");
             String name = reader.readLine();
-            Group group = new Group();
-            group.setId(id);
-            group.setName(name);
-            groupService.update(group);
+            System.out.print("Возраст: ");
+            String ageString = reader.readLine();
+            int age = Integer.parseInt(ageString);
+            Student student = new Student();
+            student.setId(id);
+            student.setAge(age);
+            student.setName(name);
+            studentService.update(student);
         } catch (IOException e) {
             System.out.println("Проблемка : " + e.getMessage());
         }
     }
 
     private void delete(BufferedReader reader) {
-        System.out.println("GroupController.delete");
+        System.out.println("StudentController.delete");
         try {
             System.out.print("Введите id: ");
             String id = reader.readLine();
-            groupService.delete(id);
+            studentService.delete(id);
         } catch (IOException e) {
             System.out.println("Проблемка : " + e.getMessage());
         }
     }
 
     private void findById(BufferedReader reader) {
-        System.out.println("GroupController.findById");
+        System.out.println("StudentController.findById");
         try {
             System.out.print("Введите id: ");
             String id = reader.readLine();
-            Group group = groupService.findById(id);
-            System.out.println("Група = " + group);
+            Student student = studentService.findById(id);
+            System.out.println("Студент = " + student);
         } catch (IOException e) {
             System.out.println("Проблемка : " + e.getMessage());
         }
     }
 
     private void findAll() {
-        System.out.println("GroupController.findAll");
-        Group[] groups = groupService.findAll();
-        if (groups != null && groups.length != 0) {
-            for (Group group : groups) {
-                System.out.println("Група = " + group);
+        System.out.println("StudentController.findAll");
+        Student[] students = studentService.findAll();
+        if (students != null && students.length != 0) {
+            for (Student student : students) {
+                System.out.println("Студент = " + student);
             }
         } else {
             System.out.println("Список пуст");

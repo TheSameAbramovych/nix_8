@@ -1,6 +1,6 @@
-package ua.com.hw4.entity;
+package ua.com.alevel.entity;
 
-import ua.com.hw4.utils.CustomList;
+import ua.com.alevel.utils.CustomList;
 
 import java.util.Objects;
 
