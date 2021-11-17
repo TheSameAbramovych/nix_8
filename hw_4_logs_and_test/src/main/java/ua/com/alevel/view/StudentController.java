@@ -24,7 +24,7 @@ public class StudentController {
                 runNavigation();
             }
         } catch (IOException e) {
-            System.out.println("problem: = " + e.getMessage());
+            System.out.println("Проблемка : = " + e.getMessage());
         }
     }
 

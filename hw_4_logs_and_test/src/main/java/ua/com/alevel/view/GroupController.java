@@ -7,6 +7,7 @@ import ua.com.alevel.utils.IOUtils;
 import java.io.BufferedReader;
 import java.io.IOException;
 
+
 public class GroupController {
 
     private final GroupService groupService = new GroupService();
@@ -35,7 +36,7 @@ public class GroupController {
         System.out.println("Удалить групу -> 3");
         System.out.println("Найти групу по Id -> 4");
         System.out.println("Список всех груп -> 5");
-        System.out.println("Удалить студента из всех груп -> 6");
+        System.out.println("Удалить студента из групы -> 6");
         System.out.println("Назад -> 0");
         System.out.println();
     }
@@ -53,9 +54,8 @@ public class GroupController {
 
     private void create(BufferedReader reader) {
         try {
-            Group group = new Group();
             System.out.println("GroupController.create");
-
+            Group group = new Group();
             System.out.print("Имя групы: ");
             String name = reader.readLine();
             group.setName(name);
@@ -64,30 +64,47 @@ public class GroupController {
             for (String studentId : IOUtils.readStringArray()) {
                 if (!studentId.isEmpty()) {
                     group.addStudentId(studentId);
+                } else {
+                    System.out.println("Поле не может быть пустым");
                 }
             }
 
             System.out.print("Староста: ");
             String headManId = reader.readLine();
-            group.setHeadman(headManId);
+            if (!headManId.isEmpty()) {
+                group.setHeadman(headManId);
+            }
 
             groupService.create(group);
         } catch (Exception e) {
             System.out.println("Проблемка : " + e.getMessage());
-            e.printStackTrace();
         }
     }
 
     private void update(BufferedReader reader) {
         try {
             System.out.println("GroupController.update");
+            Group group = new Group();
+
             System.out.print("Введи id: ");
             String id = reader.readLine();
+            group.setId(id);
+
             System.out.print("Имя: ");
             String name = reader.readLine();
-            Group group = new Group();
-            group.setId(id);
             group.setName(name);
+
+            System.out.print("Id Старосты: ");
+            String headManId = reader.readLine();
+            group.setHeadman(headManId);
+
+            System.out.print("Id Студентов: ");
+            for (String studentId : IOUtils.readStringArray()) {
+                if (!studentId.isEmpty()) {
+                    group.addStudentId(studentId);
+                }
+            }
+
             groupService.update(group);
         } catch (IOException e) {
             System.out.println("Проблемка : " + e.getMessage());
@@ -132,10 +149,13 @@ public class GroupController {
     private void removeStudentId(BufferedReader reader) {
         System.out.println("GroupController.removeStudentId");
         try {
-            System.out.print("Введите id: ");
+            System.out.print("Введите id групы: ");
+            String idGroup = reader.readLine();
+
+            System.out.print("Введите id студента: ");
             String id = reader.readLine();
-            Group group = new Group();
-            group.removeStudentId(id);
+
+            groupService.removeStudentId(idGroup, id);
         } catch (IOException e) {
             System.out.println("Проблемка : " + e.getMessage());
         }

@@ -62,9 +62,9 @@ public abstract class DB<T extends Entity> {
     }
 
     public T[] findAll() {
-        T[] usersTmp = createEntitiesArray(pointer);
-        System.arraycopy(entities, 0, usersTmp, 0, pointer);
-        return usersTmp;
+        T[] entitiesTmp = createEntitiesArray(pointer);
+        System.arraycopy(entities, 0, entitiesTmp, 0, pointer);
+        return entitiesTmp;
     }
 
     private String generateId() {
@@ -76,9 +76,9 @@ public abstract class DB<T extends Entity> {
     }
 
     private void copyToNewArray() {
-        T[] usersTmp = entities;
-        entities = createEntitiesArray((entities.length * 2 / 3) + 1 + entities.length);
-        System.arraycopy(usersTmp, 0, entities, 0, pointer);
+        T[] entitiesTmp = this.entities;
+        this.entities = createEntitiesArray((this.entities.length * 2 / 3) + 1 + this.entities.length);
+        System.arraycopy(entitiesTmp, 0, this.entities, 0, pointer);
     }
 
     protected abstract T[] createEntitiesArray(int size);

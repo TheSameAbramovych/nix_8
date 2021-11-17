@@ -28,14 +28,14 @@ public class LogsAndTestMain {
                 runNavigation();
             }
         } catch (IOException e) {
-            System.out.println("problem: = " + e.getMessage());
+            System.out.println("Проблемка : = " + e.getMessage());
         }
     }
 
     private static void runNavigation() {
-        System.out.println("StudentCrud -> 1");
-        System.out.println("GroupCrud -> 2");
-        System.out.println("Выход -> 0");
+        System.out.println("Меню управления студентами -> 1");
+        System.out.println("Меню управления групами -> 2");
+        System.out.println("Выход с программы -> 0");
         System.out.println();
     }
 

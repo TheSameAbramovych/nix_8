@@ -1,5 +1,7 @@
 package ua.com.alevel.utils;
 
+import java.io.BufferedReader;
+import java.io.IOException;
 import java.util.Scanner;
 
 public final class IOUtils {
@@ -11,5 +13,10 @@ public final class IOUtils {
         Scanner scan = new Scanner(System.in);
         String str = scan.nextLine();
         return str.split(",");
+    }
+
+    public static String readOrDefault(String defaultStr, BufferedReader reader) throws IOException {
+        String str = reader.readLine();
+        return "".equals(str) ? defaultStr : str;
     }
 }

@@ -8,7 +8,7 @@ public class Group extends Entity {
     private String id;
     private String name;
     private String headman;
-    private CustomList<String> studentIds;
+    private CustomList<String> studentIds = new CustomList<>();
 
     public String getHeadman() {
         return headman;
@@ -38,22 +38,22 @@ public class Group extends Entity {
         studentIds.remove(studentIds.indexOf(id));
     }
 
+    public void removeAllStudents() {
+        studentIds = new CustomList<>();
+    }
+
     public CustomList<String> getStudentIds() {
         return studentIds;
     }
 
     public void addStudentId(String id) {
-        if (studentIds == null) {
-            studentIds = new CustomList<>();
-        }
         studentIds.add(id);
     }
 
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
-        if (!(o instanceof Group)) return false;
-        Group group = (Group) o;
+        if (!(o instanceof Group group)) return false;
         return Objects.equals(id, group.id)
                 && Objects.equals(name, group.name)
                 && Objects.equals(headman, group.headman);
@@ -66,7 +66,7 @@ public class Group extends Entity {
 
     @Override
     public String toString() {
-        return "User{" +
+        return "Group{" +
                 "id='" + id + '\'' +
                 ", name='" + name + '\'' +
                 ", headman='" + headman + '\'' +
