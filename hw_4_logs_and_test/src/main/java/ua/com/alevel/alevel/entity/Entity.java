@@ -1,6 +1,6 @@
-package ua.com.alevel.entity;
+package ua.com.alevel.alevel.entity;
 
-public abstract class Entity {
+public class Entity {
     private String id;
 
     public String getId() {

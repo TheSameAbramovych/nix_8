@@ -1,4 +1,4 @@
-package ua.com.alevel.entity;
+package ua.com.alevel.alevel.entity;
 
 import java.util.Objects;
 
@@ -6,7 +6,16 @@ public class Student extends Entity {
 
     private String id;
     private String name;
+    private String email;
     private int age;
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
 
     public String getId() {
         return id;
@@ -35,14 +44,13 @@ public class Student extends Entity {
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
-        if (!(o instanceof Student)) return false;
-        Student student = (Student) o;
+        if (!(o instanceof Student student)) return false;
         return age == student.age && Objects.equals(id, student.id) && Objects.equals(name, student.name);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, name, age);
+        return Objects.hash(id, name, age, email);
     }
 
     @Override
@@ -51,6 +59,7 @@ public class Student extends Entity {
                 "id='" + id + '\'' +
                 ", name='" + name + '\'' +
                 ", age=" + age +
+                ", email=" + email +
                 '}';
     }
 }

@@ -1,8 +1,8 @@
-package ua.com.alevel.dao;
+package ua.com.alevel.alevel.dao;
 
 
-import ua.com.alevel.db.StudentDB;
-import ua.com.alevel.entity.Student;
+import ua.com.alevel.alevel.db.StudentDB;
+import ua.com.alevel.alevel.entity.Student;
 
 public class StudentDao {
 

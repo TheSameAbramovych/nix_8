@@ -1,6 +1,6 @@
-package ua.com.alevel.db;
+package ua.com.alevel.alevel.db;
 
-import ua.com.alevel.entity.Group;
+import ua.com.alevel.alevel.entity.Group;
 
 public class GroupDB extends DB<Group> {
 

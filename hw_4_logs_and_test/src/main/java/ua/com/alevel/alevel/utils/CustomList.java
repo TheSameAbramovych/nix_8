@@ -1,4 +1,4 @@
-package ua.com.alevel.utils;
+package ua.com.alevel.alevel.utils;
 
 import java.util.Objects;
 
@@ -50,7 +50,7 @@ public class CustomList<T> {
 
     private void copyToNewArray() {
         T[] usersTmp = entities;
-        entities = createEntitiesArray((entities.length * 2 / 3) + 1 + entities.length);
+        entities = createEntitiesArray((entities.length * 3 / 2) + 1);
         System.arraycopy(usersTmp, 0, entities, 0, pointer);
     }
 

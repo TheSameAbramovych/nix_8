@@ -1,4 +1,4 @@
-package ua.com.alevel.service;
+package ua.com.alevel.alevel.service;
 
 import org.apache.commons.lang3.StringUtils;
 import org.junit.Test;
@@ -6,10 +6,10 @@ import org.junit.runner.RunWith;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.junit.MockitoJUnitRunner;
-import ua.com.alevel.dao.GroupDao;
-import ua.com.alevel.dao.StudentDao;
-import ua.com.alevel.entity.Group;
-import ua.com.alevel.entity.Student;
+import ua.com.alevel.alevel.dao.GroupDao;
+import ua.com.alevel.alevel.dao.StudentDao;
+import ua.com.alevel.alevel.entity.Group;
+import ua.com.alevel.alevel.entity.Student;
 
 import java.util.Random;
 import java.util.UUID;
@@ -75,6 +75,78 @@ public class GroupServiceTest {
         verify(groupDao, never()).update(group);
     }
 
+    @Test
+    public void delete_ok() {
+        Group group = createGroup();
+
+        groupService.delete(group.getId());
+        verify(groupDao).delete(group.getId());
+    }
+
+    @Test
+    public void findById_ok() {
+        Group group = createGroup();
+
+        groupService.findById(group.getId());
+        verify(groupDao).findById(group.getId());
+    }
+
+    @Test
+    public void create_ok() {
+        Group group = createGroup();
+        group.addStudentId(group.getHeadman());
+
+        when(studentDao.findById(group.getHeadman())).thenReturn(createStudent());
+        when(studentDao.findById(group.getStudentIds().get(0))).thenReturn(createStudent());
+
+        groupService.create(group);
+
+        verify(groupDao).create(group);
+        verify(studentDao).findById(group.getHeadman());
+        verify(studentDao).findById(group.getStudentIds().get(0));
+    }
+
+    @Test
+    public void create_studentNotExists_ok() {
+        Group group = createGroup();
+        group.addStudentId(group.getHeadman());
+
+        groupService.create(group);
+
+        verify(groupDao, never()).create(group);
+        verify(studentDao, never()).findById(group.getHeadman());
+        verify(studentDao).findById(group.getStudentIds().get(0));
+    }
+
+    @Test
+    public void create_headmenNotExistsInStudent_ok() {
+        Group group = createGroup();
+
+        when(studentDao.findById(group.getStudentIds().get(0))).thenReturn(createStudent());
+
+        groupService.create(group);
+
+        verify(groupDao, never()).create(group);
+        verify(studentDao, never()).findById(group.getHeadman());
+        verify(studentDao).findById(group.getStudentIds().get(0));
+    }
+
+    @Test
+    public void create_nameIsEmpty_ok() {
+        Group group = createGroup();
+        group.addStudentId(group.getHeadman());
+        group.setName(StringUtils.EMPTY);
+
+        when(studentDao.findById(group.getHeadman())).thenReturn(createStudent());
+        when(studentDao.findById(group.getStudentIds().get(0))).thenReturn(createStudent());
+
+        groupService.create(group);
+
+        verify(groupDao, never()).create(group);
+        verify(studentDao).findById(group.getHeadman());
+        verify(studentDao).findById(group.getStudentIds().get(0));
+    }
+
     private Group createGroup() {
         Group group = new Group();
         group.setId(UUID.randomUUID().toString());
@@ -90,7 +162,7 @@ public class GroupServiceTest {
         student.setId(UUID.randomUUID().toString());
         student.setName(UUID.randomUUID().toString());
         student.setAge(RANDOM.nextInt());
-
+        student.setEmail(UUID.randomUUID().toString());
         return student;
     }
 }

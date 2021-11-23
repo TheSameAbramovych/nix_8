@@ -1,7 +1,7 @@
-package ua.com.alevel;
+package ua.com.alevel.alevel;
 
-import ua.com.alevel.view.GroupController;
-import ua.com.alevel.view.StudentController;
+import ua.com.alevel.alevel.view.GroupController;
+import ua.com.alevel.alevel.view.StudentController;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -33,10 +33,12 @@ public class LogsAndTestMain {
     }
 
     private static void runNavigation() {
-        System.out.println("Меню управления студентами -> 1");
-        System.out.println("Меню управления групами -> 2");
-        System.out.println("Выход с программы -> 0");
         System.out.println();
+        System.out.println("""
+                Меню управления студентами -> 1
+                Меню управления групами -> 2
+                Выход с программы -> 0
+                """);
     }
 
     private static void runEntityCrud(String position, BufferedReader reader) {

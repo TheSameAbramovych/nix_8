@@ -1,6 +1,6 @@
-package ua.com.alevel.db;
+package ua.com.alevel.alevel.db;
 
-import ua.com.alevel.entity.Entity;
+import ua.com.alevel.alevel.entity.Entity;
 
 import java.util.Objects;
 import java.util.UUID;
@@ -42,7 +42,10 @@ public abstract class DB<T extends Entity> {
                 break;
             }
             if (Objects.equals(entities[i].getId(), id)) {
-                System.arraycopy(entities, i + 1, entities, i, pointer - i - 1);
+                T[] entitiesTmp = createEntitiesArray(pointer);
+                System.arraycopy(entities, i + 1, entitiesTmp, i, pointer - i - 1);
+                System.arraycopy(entities, 0, entitiesTmp, 0, i);
+                entities = entitiesTmp;
                 pointer--;
                 return;
             }

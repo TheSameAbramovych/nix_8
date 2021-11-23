@@ -1,8 +1,10 @@
-package ua.com.alevel.view;
+package ua.com.alevel.alevel.view;
 
-import ua.com.alevel.entity.Group;
-import ua.com.alevel.service.GroupService;
-import ua.com.alevel.utils.IOUtils;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import ua.com.alevel.alevel.entity.Group;
+import ua.com.alevel.alevel.service.GroupService;
+import ua.com.alevel.alevel.utils.IOUtils;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -11,6 +13,7 @@ import java.io.IOException;
 public class GroupController {
 
     private final GroupService groupService = new GroupService();
+    private static final Logger LOGGER_ERROR = LoggerFactory.getLogger("error");
 
     public void run(BufferedReader reader) {
         System.out.println();
@@ -26,19 +29,22 @@ public class GroupController {
                 runNavigation();
             }
         } catch (IOException e) {
+            LOGGER_ERROR.error("problem: = " + e.getMessage());
             System.out.println("problem: = " + e.getMessage());
         }
     }
 
     private void runNavigation() {
-        System.out.println("Создать групу -> 1");
-        System.out.println("Изменить данные групы -> 2");
-        System.out.println("Удалить групу -> 3");
-        System.out.println("Найти групу по Id -> 4");
-        System.out.println("Список всех груп -> 5");
-        System.out.println("Удалить студента из групы -> 6");
-        System.out.println("Назад -> 0");
         System.out.println();
+        System.out.println("""
+                Создать групу -> 1
+                Изменить данные групы -> 2
+                Удалить групу -> 3
+                Найти групу по Id -> 4
+                Список всех груп -> 5
+                Удалить студента из групы -> 6
+                Назад -> 0
+                """);
     }
 
     private void crud(String position, BufferedReader reader) {
@@ -64,8 +70,6 @@ public class GroupController {
             for (String studentId : IOUtils.readStringArray()) {
                 if (!studentId.isEmpty()) {
                     group.addStudentId(studentId);
-                } else {
-                    System.out.println("Поле не может быть пустым");
                 }
             }
 
@@ -73,10 +77,13 @@ public class GroupController {
             String headManId = reader.readLine();
             if (!headManId.isEmpty()) {
                 group.setHeadman(headManId);
+            } else {
+                group.setHeadman("");
             }
 
             groupService.create(group);
         } catch (Exception e) {
+            LOGGER_ERROR.error("problem: = " + e.getMessage());
             System.out.println("Проблемка : " + e.getMessage());
         }
     }
@@ -105,8 +112,10 @@ public class GroupController {
                 }
             }
 
+
             groupService.update(group);
         } catch (IOException e) {
+            LOGGER_ERROR.error("problem: = " + e.getMessage());
             System.out.println("Проблемка : " + e.getMessage());
         }
     }
@@ -118,6 +127,7 @@ public class GroupController {
             String id = reader.readLine();
             groupService.delete(id);
         } catch (IOException e) {
+            LOGGER_ERROR.error("problem: = " + e.getMessage());
             System.out.println("Проблемка : " + e.getMessage());
         }
     }
@@ -130,6 +140,7 @@ public class GroupController {
             Group group = groupService.findById(id);
             System.out.println("Група = " + group);
         } catch (IOException e) {
+            LOGGER_ERROR.error("problem: = " + e.getMessage());
             System.out.println("Проблемка : " + e.getMessage());
         }
     }
@@ -142,6 +153,7 @@ public class GroupController {
                 System.out.println("Група = " + group);
             }
         } else {
+            LOGGER_ERROR.error("list of group is empty");
             System.out.println("Список пуст");
         }
     }
@@ -157,6 +169,7 @@ public class GroupController {
 
             groupService.removeStudentId(idGroup, id);
         } catch (IOException e) {
+            LOGGER_ERROR.error("problem: = " + e.getMessage());
             System.out.println("Проблемка : " + e.getMessage());
         }
     }
