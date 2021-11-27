@@ -1,7 +1,7 @@
-package ua.com.alevel.alevel;
+package ua.com.alevel;
 
-import ua.com.alevel.alevel.view.GroupController;
-import ua.com.alevel.alevel.view.StudentController;
+import ua.com.alevel.view.GroupController;
+import ua.com.alevel.view.StudentController;
 
 import java.io.BufferedReader;
 import java.io.IOException;

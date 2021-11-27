@@ -1,10 +1,10 @@
-package ua.com.alevel.alevel.db;
+package ua.com.alevel.db;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.InjectMocks;
 import org.mockito.junit.MockitoJUnitRunner;
-import ua.com.alevel.alevel.entity.Entity;
+import ua.com.alevel.entity.Entity;
 
 import static org.junit.jupiter.api.Assertions.*;
 

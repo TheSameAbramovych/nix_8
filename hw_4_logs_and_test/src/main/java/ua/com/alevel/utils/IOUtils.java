@@ -1,4 +1,4 @@
-package ua.com.alevel.alevel.utils;
+package ua.com.alevel.utils;
 
 import java.io.BufferedReader;
 import java.io.IOException;

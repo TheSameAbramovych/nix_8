@@ -1,10 +1,10 @@
-package ua.com.alevel.alevel.view;
+package ua.com.alevel.view;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import ua.com.alevel.alevel.entity.Group;
-import ua.com.alevel.alevel.service.GroupService;
-import ua.com.alevel.alevel.utils.IOUtils;
+import ua.com.alevel.entity.Group;
+import ua.com.alevel.service.GroupService;
+import ua.com.alevel.utils.IOUtils;
 
 import java.io.BufferedReader;
 import java.io.IOException;

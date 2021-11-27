@@ -1,8 +1,8 @@
-package ua.com.alevel.alevel.dao;
+package ua.com.alevel.dao;
 
 
-import ua.com.alevel.alevel.db.GroupDB;
-import ua.com.alevel.alevel.entity.Group;
+import ua.com.alevel.db.GroupDB;
+import ua.com.alevel.entity.Group;
 
 public class GroupDao {
 

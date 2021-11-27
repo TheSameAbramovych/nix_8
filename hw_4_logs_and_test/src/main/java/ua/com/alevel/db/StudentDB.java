@@ -1,6 +1,6 @@
-package ua.com.alevel.alevel.db;
+package ua.com.alevel.db;
 
-import ua.com.alevel.alevel.entity.Student;
+import ua.com.alevel.entity.Student;
 
 public class StudentDB extends DB<Student> {
 

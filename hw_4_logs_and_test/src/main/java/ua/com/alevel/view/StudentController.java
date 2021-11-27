@@ -1,9 +1,9 @@
-package ua.com.alevel.alevel.view;
+package ua.com.alevel.view;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import ua.com.alevel.alevel.entity.Student;
-import ua.com.alevel.alevel.service.StudentService;
+import ua.com.alevel.entity.Student;
+import ua.com.alevel.service.StudentService;
 
 import java.io.BufferedReader;
 import java.io.IOException;

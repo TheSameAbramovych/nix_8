@@ -1,11 +1,11 @@
-package ua.com.alevel.alevel.service;
+package ua.com.alevel.service;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import ua.com.alevel.alevel.dao.GroupDao;
-import ua.com.alevel.alevel.dao.StudentDao;
-import ua.com.alevel.alevel.entity.Group;
-import ua.com.alevel.alevel.utils.CustomList;
+import ua.com.alevel.dao.GroupDao;
+import ua.com.alevel.dao.StudentDao;
+import ua.com.alevel.entity.Group;
+import ua.com.alevel.utils.CustomList;
 
 public class GroupService {
     private static final Logger LOGGER_ERROR = LoggerFactory.getLogger("error");

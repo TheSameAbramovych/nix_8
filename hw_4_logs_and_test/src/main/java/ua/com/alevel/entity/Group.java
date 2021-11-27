@@ -1,6 +1,6 @@
-package ua.com.alevel.alevel.entity;
+package ua.com.alevel.entity;
 
-import ua.com.alevel.alevel.utils.CustomList;
+import ua.com.alevel.utils.CustomList;
 
 import java.util.Objects;
 

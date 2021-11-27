@@ -1,4 +1,4 @@
-package ua.com.alevel.alevel.service;
+package ua.com.alevel.service;
 
 import org.apache.commons.lang3.StringUtils;
 import org.junit.Test;
@@ -6,10 +6,10 @@ import org.junit.runner.RunWith;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.junit.MockitoJUnitRunner;
-import ua.com.alevel.alevel.dao.GroupDao;
-import ua.com.alevel.alevel.dao.StudentDao;
-import ua.com.alevel.alevel.entity.Group;
-import ua.com.alevel.alevel.entity.Student;
+import ua.com.alevel.dao.GroupDao;
+import ua.com.alevel.dao.StudentDao;
+import ua.com.alevel.entity.Group;
+import ua.com.alevel.entity.Student;
 
 import java.util.Random;
 import java.util.UUID;

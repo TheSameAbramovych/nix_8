@@ -1,6 +1,6 @@
-package ua.com.alevel.alevel.db;
+package ua.com.alevel.db;
 
-import ua.com.alevel.alevel.entity.Entity;
+import ua.com.alevel.entity.Entity;
 
 import java.util.Objects;
 import java.util.UUID;
