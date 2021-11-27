@@ -31,6 +31,10 @@
         <module>demo_web</module>
         <module>hw_4_logs_and_test</module>
         <module>hw_5_collection</module>
+        <module>unit_3_start_oop</module>
+        <module>unit_4_next_oop</module>
+        <module>unit_5_about_object</module>
+        <module>unit_8_collection</module>
 
     </modules>
 
