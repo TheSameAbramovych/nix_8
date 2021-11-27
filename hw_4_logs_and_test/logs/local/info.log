@@ -1,0 +1,9 @@
+20:04:59.597 [main] INFO  info - Create student: Student{id='5f426569-ac3c-4091-a376-8985f2fa8687', name='1', age=1, email=@}
+20:05:08.185 [main] INFO  info - Create student: Student{id='f440a952-ba89-4540-8cdb-6ac28c5e5bf0', name='w', age=111, email=!2@}
+20:05:16.450 [main] INFO  info - Create student: Student{id='ffa41436-7e61-42d9-9197-b217c46d4ce4', name='qsq', age=12, email=@11}
+20:06:34.742 [main] INFO  info - Create group: Group{id='null', name='11', headman='f440a952-ba89-4540-8cdb-6ac28c5e5bf0', studentIds=[f440a952-ba89-4540-8cdb-6ac28c5e5bf0, 5f426569-ac3c-4091-a376-8985f2fa8687, f440a952-ba89-4540-8cdb-6ac28c5e5bf0]}
+20:06:53.806 [main] INFO  info - Change name group on: 11
+20:06:53.806 [main] INFO  info - Change headman on: f440a952-ba89-4540-8cdb-6ac28c5e5bf0
+20:06:53.822 [main] INFO  info - Add student: f440a952-ba89-4540-8cdb-6ac28c5e5bf0
+20:06:53.822 [main] INFO  info - Add student: 5f426569-ac3c-4091-a376-8985f2fa8687
+20:06:53.822 [main] INFO  info - Add student: f440a952-ba89-4540-8cdb-6ac28c5e5bf0
