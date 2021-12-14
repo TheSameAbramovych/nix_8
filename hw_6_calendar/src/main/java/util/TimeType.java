@@ -1,44 +1,46 @@
 package util;
 
+import java.math.BigDecimal;
+import java.math.RoundingMode;
 import java.util.stream.IntStream;
 
 public enum TimeType {
     YEAR(12),
-    MONTH(30.416666666f),
+    MONTH(30.416666666),
     DAY(24),
     HOUR(60),
     MINUTE(60),
     SECOND(1000),
     MILLISECOND(1);
 
-    final float timeToNextType;
+    final BigDecimal timeToNextType;
 
-    TimeType(float timeToNextType) {
-        this.timeToNextType = timeToNextType;
+    TimeType(double timeToNextType) {
+        this.timeToNextType = new BigDecimal(timeToNextType);
     }
 
     public long to(long time, TimeType targetType) {
         if (targetType.ordinal() < this.ordinal()) {
-            return toUp((float) time, targetType);
+            return toUp(new BigDecimal(time), targetType);
         } else if (targetType.ordinal() > this.ordinal()) {
-            return toDown((float) time, targetType);
+            return toDown(new BigDecimal(time), targetType);
         }
 
         return time;
     }
 
-    private long toUp(float time, TimeType targetType) {
+    private long toUp(BigDecimal time, TimeType targetType) {
         TimeType previousType = getPreviousType();
         if (previousType == null || this.equals(targetType)) {
-            return (long) time;
+            return time.longValue();
         }
         if (DAY.equals(this)) {
             int months = 0;
             int year = 0;
             Month month = Month.JANUARY;
-            while (time >= 0) {
-                time = time - month.getDays(year);
-                if (time >= 0) {
+            while (time.compareTo(BigDecimal.ZERO) >= 0) {
+                time = time.subtract(new BigDecimal(month.getDays(year)));
+                if (time.compareTo(BigDecimal.ZERO) >= 0) {
                     months++;
                 }
                 if (months % 12 == 0) {
@@ -46,35 +48,36 @@ public enum TimeType {
                 }
                 month = month.getNext() == null ? Month.JANUARY : month.getNext();
             }
-            time = months;
+            time = new BigDecimal(months);
         } else {
-            time = time / previousType.timeToNextType;
+            time = time.divide(previousType.timeToNextType, RoundingMode.DOWN);
         }
 
         return previousType.toUp(time, targetType);
     }
 
-    private long toDown(float time, TimeType targetType) {
+    private long toDown(BigDecimal time, TimeType targetType) {
         TimeType nextType = getNextType();
         if (nextType == null || this.equals(targetType)) {
-            return (long) time;
+            return time.longValue();
         }
 
         if (MONTH.equals(this)) {
-            int clearMonth = (int) (time - (time % 12));
-            float daysInAllYears = clearMonth * timeToNextType;
-            int leapYears = ((clearMonth / 12) - ((clearMonth / 12) % 4)) / 4;
+            BigDecimal monthCount = new BigDecimal(12);
+            BigDecimal clearMonth = time.subtract(time.remainder(monthCount));
+            BigDecimal leapYears = clearMonth.divide(monthCount, RoundingMode.DOWN).divide(new BigDecimal(4), RoundingMode.DOWN);
 
-            int month = (int) time % 12;
+            BigDecimal daysInAllYears = timeToNextType.multiply(clearMonth).setScale(1, RoundingMode.UP);
+            int month = time.remainder(monthCount).intValue();
             Integer daysInLastYear = IntStream.range(0, month)
                     .map(operand -> ++operand)
                     .mapToObj(Month::ofNumber)
                     .map(Month::getDays)
                     .reduce(0, Integer::sum);
 
-            time = daysInLastYear + leapYears + daysInAllYears;
+            time = new BigDecimal(daysInLastYear).add(leapYears).add(daysInAllYears).setScale(1, RoundingMode.UP);
         } else {
-            time = time * timeToNextType;
+            time = time.multiply(timeToNextType);
         }
 
         return nextType.toDown(time, targetType);

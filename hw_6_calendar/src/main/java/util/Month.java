@@ -1,7 +1,5 @@
 package util;
 
-import java.util.Arrays;
-
 public enum Month {
     JANUARY(31),
     FEBRUARY(28),
@@ -39,15 +37,9 @@ public enum Month {
         return days;
     }
 
-    public static int allDays() {
-        return Arrays.stream(Month.values())
-                .map(Month::getDays)
-                .reduce(0, Integer::sum);
-    }
-
     public static Month ofNumber(int i) {
         if (i > 12) {
-            throw new IllegalArgumentException("No exists month with number " + i);
+            throw new IllegalArgumentException("Не найден месяц по номеру " + i);
         }
         return values()[i - 1];
     }
