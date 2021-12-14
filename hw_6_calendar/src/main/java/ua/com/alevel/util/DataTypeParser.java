@@ -1,4 +1,4 @@
-package util;
+package ua.com.alevel.util;
 
 public enum DataTypeParser implements TypeParser {
     YYYY(TimeType.YEAR),

@@ -1,4 +1,4 @@
-package util;
+package ua.com.alevel.util;
 
 import java.math.BigDecimal;
 import java.math.RoundingMode;

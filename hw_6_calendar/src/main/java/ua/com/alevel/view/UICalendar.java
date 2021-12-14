@@ -1,8 +1,8 @@
-package view;
+package ua.com.alevel.view;
 
-import util.Calendar;
-import util.SimpleDateParser;
-import util.TimeType;
+import ua.com.alevel.util.Calendar;
+import ua.com.alevel.util.SimpleDateParser;
+import ua.com.alevel.util.TimeType;
 
 import java.io.BufferedReader;
 import java.io.IOException;
