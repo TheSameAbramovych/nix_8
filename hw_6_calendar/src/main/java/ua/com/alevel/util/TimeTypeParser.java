@@ -1,6 +1,7 @@
 package ua.com.alevel.util;
 
 public enum TimeTypeParser implements TypeParser {
+
     HOUR(TimeType.HOUR, 24),
     MINUTE(TimeType.MINUTE, 60),
     SECOND(TimeType.SECOND, 60),

@@ -5,6 +5,7 @@ import java.math.RoundingMode;
 import java.util.stream.IntStream;
 
 public enum TimeType {
+
     YEAR(12),
     MONTH(30.416666666),
     DAY(24),
@@ -90,5 +91,4 @@ public enum TimeType {
     public TimeType getPreviousType() {
         return this.ordinal() <= 0 ? null : values()[this.ordinal() - 1];
     }
-
 }

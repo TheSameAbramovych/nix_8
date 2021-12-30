@@ -1,6 +1,7 @@
 package ua.com.alevel.util;
 
 public enum DataTypeParser implements TypeParser {
+
     YYYY(TimeType.YEAR),
     MMM(TimeType.MONTH) {
         @Override

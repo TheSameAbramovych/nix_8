@@ -10,8 +10,8 @@ import java.io.InputStreamReader;
 import java.util.ArrayList;
 import java.util.List;
 
-
 public class UICalendar {
+
     private SimpleDateParser parser = new SimpleDateParser("dd/mm/yyyy 00:00");
 
     public void run() {
@@ -222,5 +222,4 @@ public class UICalendar {
             System.out.println("Проблемка : " + e.getMessage());
         }
     }
-
 }

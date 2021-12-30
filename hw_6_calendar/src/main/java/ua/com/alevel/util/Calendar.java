@@ -3,10 +3,8 @@ package ua.com.alevel.util;
 import java.util.List;
 
 public class Calendar {
-    private long timestamp;
 
-    public Calendar() {
-    }
+    private long timestamp;
 
     public Calendar(long timestamp) {
         if (timestamp < 0) {

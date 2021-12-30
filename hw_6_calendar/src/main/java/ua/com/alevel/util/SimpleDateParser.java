@@ -8,6 +8,7 @@ import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 
 public class SimpleDateParser {
+
     private static final String DEFAULT_DATE_DELIMITER_PATTERN = "-";
     private static final String DATE_DELIMITER_PATTERN = "[-:/]";
     private static final String TIME_DELIMITER_PATTERN = ":";
@@ -106,5 +107,4 @@ public class SimpleDateParser {
             throw new IllegalArgumentException("Неккоректный ввод!");
         }
     }
-
 }

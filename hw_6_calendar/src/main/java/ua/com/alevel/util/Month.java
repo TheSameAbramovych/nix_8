@@ -1,6 +1,7 @@
 package ua.com.alevel.util;
 
 public enum Month {
+
     JANUARY(31),
     FEBRUARY(28),
     MARCH(31),
