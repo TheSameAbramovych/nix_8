@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<title>Update group</title>
+<div th:replace="fragments/header :: header"></div>
+</head>
+<body class="card-body container">
+<div class="card-body">
+    <h2>Groups</h2>
+    <div class="container-fluid">
+        <div class="row">
+            <table class="table table-bordered">
+                <thead class="table-dark">
+                <tr>
+                    <th>Id</th>
+                    <th>Name</th>
+                    <th>Headman Id</th>
+                    <th>Students</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr>
+                    <td th:text="${group.id}"></td>
+                    <td th:text="${group.name}"></td>
+                    <td th:text="${group.headman}"></td>
+                    <td>
+                        <table class="table table-bordered">
+                            <thead class="table-dark">
+                            <tr>
+                                <th>Id</th>
+                                <th>First name</th>
+                                <th>Last name</th>
+                                <th>Action</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <tr th:each="student : ${students}">
+                                <td th:text="${student.id}"></td>
+                                <td th:text="${student.firstName}"></td>
+                                <td th:text="${student.lastName}"></td>
+                                <td>
+                                    <a th:href="@{/students/details/{student_id}(student_id=${student.id})}"
+                                       class="btn btn-outline-primary">Details</a>
+                                    <a th:href="@{/groups/{id}/students/delete/{student_id}(student_id=${student.id}, id=${group.id})}"
+                                       class="btn btn-danger">Delete</a>
+                                </td>
+                            </tr>
+                            </tbody>
+                        </table>
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+            <div>
+                <div class="d-flex justify-content-end">
+                    <a th:href="@{/groups/update/{id}(id=${group.id})}" class="btn btn-outline-primary">Edit</a>
+                </div>
+                <form action="#" th:action="@{/groups/students/add}" th:object="${ids}" method="post" class="card-body">
+
+                    <div class="input-group mb-3">
+                        <input type="text" class="form-control" th:field="*{studentId}" id="studentId"
+                               placeholder="Student id" aria-label="Student id" aria-describedby="button-addon2">
+                        <button class="btn btn-outline-primary" type="submit" id="button-addon2">Add student</button>
+                        <input hidden type="number" th:value="${group.id}" id="groupId" name="groupId"
+                               placeholder="Group id">
+                    </div>
+                </form>
+            </div>
+
+        </div>
+    </div>
+</div>
+</body>
+</html>

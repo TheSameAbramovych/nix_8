@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<title>Update student</title>
+<div th:replace="fragments/header :: header"></div>
+</head>
+<body class="card-body container">
+<form action="#" th:action="@{/students/update}" th:object="${student}" method="post" class="card-body">
+    <div class="input-group">
+        <input readonly type="number" th:field="*{id}" id="id" class="form-control" placeholder="ID">
+        <input type="text" th:field="*{firstName}" id="firstName" class="form-control" placeholder="First Name">
+        <input type="text" th:field="*{lastName}" id="lastName" class="form-control" placeholder="Last Name">
+        <input type="text" th:field="*{email}" id="email" class="form-control" placeholder="Email">
+        <input type="number" th:field="*{age}" id="age" class="form-control" placeholder="Age">
+        <input class="btn btn-primary" type="submit" value="Update Student">
+    </div>
+</form>
+</body>
+</html>

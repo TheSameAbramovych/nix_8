@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Students</title>
+    <div th:replace="fragments/header :: header"></div>
+</head>
+<body class="card-body container">
+<div th:switch="${students}">
+    <h2 th:case="null">No users found!</h2>
+
+    <div th:case="*">
+        <h2>Students</h2>
+        <div class="container-fluid">
+            <div class="row">
+                <table class="table table-bordered">
+                    <thead class="table-dark">
+                    <tr>
+                        <th onclick="sort('id')">
+                            <span>Id</span>
+                            <th:block th:if="${sortData.getSort().equals('id')}">
+                                <i th:if="${sortData.getOrder().equals('DESC')}"
+                                   class="fa fa-sort-desc float-right sort"
+                                   aria-hidden="true"></i>
+                                <i th:if="${sortData.getOrder().equals('ASC')}" class="fa fa-sort-asc float-right sort"
+                                   aria-hidden="true"></i>
+                            </th:block>
+                            </th:block>
+                        <th onclick="sort('first_name')">
+                            <span>First name</span>
+                            <th:block th:if="${sortData.getSort().equals('first_name')}">
+                                <i th:if="${sortData.getOrder().equals('DESC')}"
+                                   class="fa fa-sort-desc float-right sort"
+                                   aria-hidden="true"></i>
+                                <i th:if="${sortData.getOrder().equals('ASC')}" class="fa fa-sort-asc float-right sort"
+                                   aria-hidden="true"></i>
+                            </th:block>
+                        </th>
+                        <th onclick="sort('last_name')">
+                            <span>last name</span>
+                            <th:block th:if="${sortData.getSort().equals('last_name')}">
+                                <i th:if="${sortData.getOrder().equals('DESC')}"
+                                   class="fa fa-sort-desc float-right sort"
+                                   aria-hidden="true"></i>
+                                <i th:if="${sortData.getOrder().equals('ASC')}" class="fa fa-sort-asc float-right sort"
+                                   aria-hidden="true"></i>
+                            </th:block>
+                        </th>
+                        <th>Action</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr th:each="student : ${students}">
+                        <td th:text="${student.id}" class="col-sm-1"></td>
+                        <td th:text="${student.firstName}" class="col-md-1"></td>
+                        <td th:text="${student.lastName}" class="col-md-1"></td>
+                        <td class="col-md-1">
+                            <a th:href="@{/students/details/{id}(id=${student.id})}" class="btn btn-outline-primary">Details</a>
+                            <a th:href="@{/students/delete/{id}(id=${student.id})}" class="btn btn-danger">Delete</a>
+                        </td>
+                    </tr>
+                    </tbody>
+                </table>
+                <div>
+                    <ul class="pagination">
+                        <li th:class="${pageAndSize.getPage() != page} ? 'page-item' : 'page-item active'"
+                            th:each="page : ${#numbers.sequence(1, pageCount)}">
+                            <a class="page-link" th:text="${page}"
+                               th:href="@{/students?page={page}&size={size}(page=${page},size=${pageAndSize.size})}"></a>
+                        </li>
+
+                    </ul>
+                </div>
+            </div>
+            <a class="btn btn-primary" href="/students/create" role="button">Create Student</a>
+        </div>
+    </div>
+</div>
+</body>
+</html>
