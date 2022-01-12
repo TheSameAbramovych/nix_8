@@ -5,7 +5,9 @@
     <div th:replace="fragments/header :: header"></div>
 </head>
 <body class="card-body container">
-
+<div class="row">
+    <th:block th:replace="fragments/error :: body"></th:block>
+</div>
 <form action="#" th:action="@{/students/create}" th:object="${student}" method="post" class="card-body">
     <div class="input-group">
         <input type="text" aria-label="First name" class="form-control" th:field="*{firstName}" id="firstName"

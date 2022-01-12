@@ -3,10 +3,8 @@ package ua.com.alevel.controller;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.validation.BindingResult;
+import org.springframework.web.bind.annotation.*;
 import ua.com.alevel.controller.dto.PageAndSizeData;
 import ua.com.alevel.controller.dto.SortData;
 import ua.com.alevel.controller.dto.StudentGroupIds;
@@ -14,11 +12,12 @@ import ua.com.alevel.persistence.entity.Student;
 import ua.com.alevel.service.GroupService;
 import ua.com.alevel.service.StudentService;
 
+import javax.validation.Valid;
 import java.util.List;
 
 @Controller
 @RequestMapping("/students")
-public class StudentController {
+public class StudentController extends BaseController {
 
     private final GroupService groupService;
     private final StudentService studentService;
@@ -53,7 +52,11 @@ public class StudentController {
     }
 
     @PostMapping("/create")
-    public String createStudent(Student student) {
+    public String createStudent(@Valid Student student, BindingResult br, Model model) {
+        if (br.hasErrors()) {
+            showError(br, model);
+            return "student/create";
+        }
         studentService.save(student);
         return "redirect:/students";
     }
@@ -80,8 +83,22 @@ public class StudentController {
     }
 
     @PostMapping("/update")
-    public String updateStudent(Student student) {
+    public String updateStudent(@Valid Student student, BindingResult br, Model model) {
+        if (br.hasErrors()) {
+            showError(br, model);
+            return "student/update";
+        }
         studentService.update(student);
         return "redirect:/students";
+    }
+
+    @PostMapping("/group/add")
+    public String addStudentToGroup(@Valid StudentGroupIds ids, BindingResult br, @RequestHeader("Referer") String referer, Model model) {
+        if (br.hasErrors()) {
+            showError(br, model);
+            return detailsStudent(ids.getStudentId(), model);
+        }
+        groupService.addStudent(ids.getGroupId(), ids.getStudentId());
+        return detailsStudent(ids.getStudentId(), model);
     }
 }

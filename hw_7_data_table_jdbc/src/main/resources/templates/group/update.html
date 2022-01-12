@@ -3,7 +3,9 @@
 <title>Update group</title>
 <div th:replace="fragments/header :: header"></div>
 <body class="card-body container">
-
+<div class="row">
+    <th:block th:replace="fragments/error :: body"></th:block>
+</div>
 <form action="#" th:action="@{/groups/update}" th:object="${group}" method="post" class="card-body">
     <div class="input-group">
         <input readonly type="number" th:field="*{id}" id="id" class="form-control" placeholder="ID">

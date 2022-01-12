@@ -13,10 +13,14 @@ CREATE TABLE students_group
     id      bigint auto_increment
         PRIMARY KEY,
     name    varchar(255) NOT NULL,
-    headman bigint(20)
+    headman bigint,
+    CONSTRAINT fk_headman FOREIGN KEY (headman)
+        REFERENCES students (id)
+        ON DELETE CASCADE
+        ON UPDATE NO ACTION
 );
 
-CREATE TABLE students_groups
+CREATE TABLE students_to_groups
 (
     group_id   bigint NOT NULL,
     student_id bigint NOT NULL,

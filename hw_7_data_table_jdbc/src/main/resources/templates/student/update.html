@@ -4,6 +4,9 @@
 <div th:replace="fragments/header :: header"></div>
 </head>
 <body class="card-body container">
+<div class="row">
+    <th:block th:replace="fragments/error :: body"></th:block>
+</div>
 <form action="#" th:action="@{/students/update}" th:object="${student}" method="post" class="card-body">
     <div class="input-group">
         <input readonly type="number" th:field="*{id}" id="id" class="form-control" placeholder="ID">

@@ -1,9 +1,12 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
-<title>Update student</title>
+<title>Details student</title>
 <div th:replace="fragments/header :: header"></div>
 </head>
 <body class="card-body container">
+<div class="row">
+    <th:block th:replace="fragments/error :: body"></th:block>
+</div>
 <div class="card-body">
     <h2>Student</h2>
     <div class="container-fluid">
@@ -58,7 +61,7 @@
                                 <a th:href="@{/students/update/{id}(id=${student.id})}"
                                    class="btn btn-outline-primary">Edit</a>
                             </div>
-                            <form action="#" th:action="@{/groups/students/add}" th:object="${ids}" method="post"
+                            <form action="#" th:action="@{/students/group/add}" th:object="${ids}" method="post"
                                   class="card-body">
                                 <input hidden type="number" th:value="${student.id}" id="studentId" name="studentId"
                                        placeholder="Student id">
@@ -66,8 +69,8 @@
                                     <input type="text" class="form-control" th:field="*{groupId}" id="groupId"
                                            placeholder="Group id" aria-label="Group id"
                                            aria-describedby="button-addon2">
-                                    <button class="btn btn-outline-primary" type="submit" id="button-addon2">Add to
-                                        group
+                                    <button class="btn btn-outline-primary" type="submit" id="button-addon2">
+                                        Add to group
                                     </button>
                                 </div>
                             </form>

@@ -3,6 +3,7 @@ package ua.com.alevel.controller;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 import ua.com.alevel.controller.dto.PageAndSizeData;
 import ua.com.alevel.controller.dto.SortData;
@@ -11,11 +12,12 @@ import ua.com.alevel.persistence.entity.Group;
 import ua.com.alevel.service.GroupService;
 import ua.com.alevel.service.StudentService;
 
+import javax.validation.Valid;
 import java.util.List;
 
 @Controller
 @RequestMapping("/groups")
-public class GroupController {
+public class GroupController extends BaseController {
 
     private final GroupService groupService;
     private final StudentService studentService;
@@ -48,7 +50,11 @@ public class GroupController {
     }
 
     @PostMapping("/create")
-    public String createGroup(Group group) {
+    public String createGroup(@Valid Group group, BindingResult br, Model model) {
+        if (br.hasErrors()) {
+            showError(br, model);
+            return "group/create";
+        }
         groupService.save(group);
         return "redirect:/groups";
     }
@@ -68,9 +74,13 @@ public class GroupController {
     }
 
     @PostMapping("/students/add")
-    public String addStudentToGroup(StudentGroupIds ids, @RequestHeader("Referer") String referer) {
+    public String addStudentToGroup(@Valid StudentGroupIds ids, BindingResult br, Model model) {
+        if (br.hasErrors()) {
+            showError(br, model);
+            return detailsGroup(ids.getGroupId(), model);
+        }
         groupService.addStudent(ids.getGroupId(), ids.getStudentId());
-        return "redirect:" + referer;
+        return detailsGroup(ids.getGroupId(), model);
     }
 
     @GetMapping("/delete/{id}")
@@ -87,7 +97,11 @@ public class GroupController {
     }
 
     @PostMapping("/update")
-    public String updateGroup(Group group) {
+    public String updateGroup(@Valid Group group, BindingResult br, Model model) {
+        if (br.hasErrors()) {
+            showError(br, model);
+            return "group/update";
+        }
         groupService.update(group);
         return "redirect:/groups";
     }

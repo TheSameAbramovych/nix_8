@@ -1,22 +1,15 @@
 package ua.com.alevel.controller.dto;
 
+import lombok.Data;
+
+import javax.validation.constraints.NotNull;
+
+@Data
 public class StudentGroupIds {
+
+    @NotNull(message = "Id is null")
     private Long studentId;
+
+    @NotNull(message = "Id is null")
     private Long groupId;
-
-    public Long getStudentId() {
-        return studentId;
-    }
-
-    public void setStudentId(Long studentId) {
-        this.studentId = studentId;
-    }
-
-    public Long getGroupId() {
-        return groupId;
-    }
-
-    public void setGroupId(Long groupId) {
-        this.groupId = groupId;
-    }
 }

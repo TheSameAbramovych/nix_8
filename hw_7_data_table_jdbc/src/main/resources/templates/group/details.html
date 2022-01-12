@@ -1,9 +1,12 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
-<title>Update group</title>
+<title>Details group</title>
 <div th:replace="fragments/header :: header"></div>
 </head>
 <body class="card-body container">
+<div class="row">
+    <th:block th:replace="fragments/error :: body"></th:block>
+</div>
 <div class="card-body">
     <h2>Groups</h2>
     <div class="container-fluid">
