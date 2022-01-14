@@ -3,17 +3,20 @@
 <title>Update group</title>
 <div th:replace="fragments/header :: header"></div>
 <body class="card-body container">
-<div class="row">
-    <th:block th:replace="fragments/error :: body"></th:block>
-</div>
-<form action="#" th:action="@{/groups/update}" th:object="${group}" method="post" class="card-body">
-    <div class="input-group">
-        <input readonly type="number" th:field="*{id}" id="id" class="form-control" placeholder="ID">
-        <input type="text" th:field="*{name}" id="name" class="form-control" placeholder="Name">
-        <input type="number" th:field="*{headman}" id="headman" class="form-control" placeholder="Headman">
-        <input class="btn btn-primary" type="submit" value="Update Group">
+<div style="background-color: white">
+
+    <div class="row">
+        <th:block th:replace="fragments/error :: body"></th:block>
     </div>
-</form>
+    <form action="#" th:action="@{/groups/update}" th:object="${group}" method="post" class="card-body">
+        <div class="input-group">
+            <input readonly type="number" th:field="*{id}" id="id" class="form-control" placeholder="ID">
+            <input type="text" th:field="*{name}" id="name" class="form-control" placeholder="Name">
+            <input type="number" th:field="*{headman}" id="headman" class="form-control" placeholder="Headman">
+            <input class="btn btn-primary" type="submit" value="Update Group">
+        </div>
+    </form>
+</div>
 </body>
 </html>
 

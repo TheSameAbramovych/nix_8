@@ -4,78 +4,80 @@
 <div th:replace="fragments/header :: header"></div>
 </head>
 <body class="card-body container">
-<div class="row">
-    <th:block th:replace="fragments/error :: body"></th:block>
-</div>
-<div class="card-body">
-    <h2>Student</h2>
-    <div class="container-fluid">
-        <div class="row">
-            <table class="table table-bordered">
-                <thead class="table-dark">
-                <tr>
-                    <th>Id</th>
-                    <th>First name</th>
-                    <th>Last name</th>
-                    <th>Email</th>
-                    <th>Age</th>
-                    <th>Groups</th>
-                </tr>
-                </thead>
-                <tbody>
-                <tr>
-                    <td th:text="${student.id}"></td>
-                    <td th:text="${student.firstName}"></td>
-                    <td th:text="${student.lastName}"></td>
-                    <td th:text="${student.email}"></td>
-                    <td th:text="${student.age}"></td>
-                    <td>
-                        <table>
-                            <table class="table table-bordered">
-                                <thead class="table-dark">
-                                <tr>
-                                    <th>Id</th>
-                                    <th>Name</th>
-                                    <th>Action</th>
-                                </tr>
-                                </thead>
-                                <tbody>
-                                <tr th:each="group : ${groups}">
-                                    <td th:text="${group.id}"></td>
-                                    <td th:text="${group.name}"></td>
-                                    <td>
-                                        <a th:href="@{/groups/details/{group_id}(group_id=${group.id})}"
-                                           class="btn btn-outline-primary">Details</a>
-                                        <a th:href="@{/groups/{group_id}/students/delete/{id}(group_id=${group.id}, id=${student.id})}"
-                                           class="btn btn-danger">Delete</a>
-                                    </td>
+<div style="background-color: white">
+    <div class="row">
+        <th:block th:replace="fragments/error :: body"></th:block>
+    </div>
+    <div class="card-body">
+        <h2>Student</h2>
+        <div class="container-fluid">
+            <div class="row">
+                <table class="table table-bordered">
+                    <thead class="table-dark">
+                    <tr>
+                        <th>Id</th>
+                        <th>First name</th>
+                        <th>Last name</th>
+                        <th>Email</th>
+                        <th>Age</th>
+                        <th>Groups</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr>
+                        <td th:text="${student.id}"></td>
+                        <td th:text="${student.firstName}"></td>
+                        <td th:text="${student.lastName}"></td>
+                        <td th:text="${student.email}"></td>
+                        <td th:text="${student.age}"></td>
+                        <td>
+                            <table>
+                                <table class="table table-bordered">
+                                    <thead class="table-dark">
+                                    <tr>
+                                        <th>Id</th>
+                                        <th>Name</th>
+                                        <th>Action</th>
+                                    </tr>
+                                    </thead>
+                                    <tbody>
+                                    <tr th:each="group : ${groups}">
+                                        <td th:text="${group.id}"></td>
+                                        <td th:text="${group.name}"></td>
+                                        <td>
+                                            <a th:href="@{/groups/details/{group_id}(group_id=${group.id})}"
+                                               class="btn btn-outline-primary">Details</a>
+                                            <a th:href="@{/groups/{group_id}/students/delete/{id}(group_id=${group.id}, id=${student.id})}"
+                                               class="btn btn-danger">Delete</a>
+                                        </td>
+                                    </tr>
+                                    </tbody>
+                                </table>
+                                </td>
                                 </tr>
                                 </tbody>
                             </table>
-                            </td>
-                            </tr>
-                            </tbody>
-                        </table>
-                        <div>
-                            <div class="d-flex justify-content-end">
-                                <a th:href="@{/students/update/{id}(id=${student.id})}"
-                                   class="btn btn-outline-primary">Edit</a>
-                            </div>
-                            <form action="#" th:action="@{/students/group/add}" th:object="${ids}" method="post"
-                                  class="card-body">
-                                <input hidden type="number" th:value="${student.id}" id="studentId" name="studentId"
-                                       placeholder="Student id">
-                                <div class="input-group mb-3">
-                                    <input type="text" class="form-control" th:field="*{groupId}" id="groupId"
-                                           placeholder="Group id" aria-label="Group id"
-                                           aria-describedby="button-addon2">
-                                    <button class="btn btn-outline-primary" type="submit" id="button-addon2">
-                                        Add to group
-                                    </button>
+                            <div>
+                                <div class="d-flex justify-content-end">
+                                    <a th:href="@{/students/update/{id}(id=${student.id})}"
+                                       class="btn btn-outline-primary">Edit</a>
                                 </div>
-                            </form>
-                        </div>
-            </table>
+                                <form action="#" th:action="@{/students/group/add}" th:object="${ids}" method="post"
+                                      class="card-body">
+                                    <input hidden type="number" th:value="${student.id}" id="studentId" name="studentId"
+                                           placeholder="Student id">
+                                    <div class="input-group mb-3">
+                                        <input type="text" class="form-control" th:field="*{groupId}" id="groupId"
+                                               placeholder="Group id" aria-label="Group id"
+                                               aria-describedby="button-addon2">
+                                        <button class="btn btn-outline-primary" type="submit" id="button-addon2">
+                                            Add to group
+                                        </button>
+                                    </div>
+                                </form>
+                            </div>
+                </table>
+            </div>
         </div>
     </div>
 </div>

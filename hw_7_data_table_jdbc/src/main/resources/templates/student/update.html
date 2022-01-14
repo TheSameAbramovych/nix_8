@@ -4,18 +4,20 @@
 <div th:replace="fragments/header :: header"></div>
 </head>
 <body class="card-body container">
-<div class="row">
-    <th:block th:replace="fragments/error :: body"></th:block>
-</div>
-<form action="#" th:action="@{/students/update}" th:object="${student}" method="post" class="card-body">
-    <div class="input-group">
-        <input readonly type="number" th:field="*{id}" id="id" class="form-control" placeholder="ID">
-        <input type="text" th:field="*{firstName}" id="firstName" class="form-control" placeholder="First Name">
-        <input type="text" th:field="*{lastName}" id="lastName" class="form-control" placeholder="Last Name">
-        <input type="text" th:field="*{email}" id="email" class="form-control" placeholder="Email">
-        <input type="number" th:field="*{age}" id="age" class="form-control" placeholder="Age">
-        <input class="btn btn-primary" type="submit" value="Update Student">
+<div style="background-color: white">
+    <div class="row">
+        <th:block th:replace="fragments/error :: body"></th:block>
     </div>
-</form>
+    <form action="#" th:action="@{/students/update}" th:object="${student}" method="post" class="card-body">
+        <div class="input-group">
+            <input readonly type="number" th:field="*{id}" id="id" class="form-control" placeholder="ID">
+            <input type="text" th:field="*{firstName}" id="firstName" class="form-control" placeholder="First Name">
+            <input type="text" th:field="*{lastName}" id="lastName" class="form-control" placeholder="Last Name">
+            <input type="text" th:field="*{email}" id="email" class="form-control" placeholder="Email">
+            <input type="number" th:field="*{age}" id="age" class="form-control" placeholder="Age">
+            <input class="btn btn-primary" type="submit" value="Update Student">
+        </div>
+    </form>
+</div>
 </body>
 </html>

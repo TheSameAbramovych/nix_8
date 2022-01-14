@@ -11,7 +11,7 @@ public class RequestHelper {
         if (pageAndSizeData == null || pageAndSizeData.getSize() <= 0 || pageAndSizeData.getPage() <= 0) {
             pageAndSizeData = new PageAndSizeData();
             pageAndSizeData.setPage(1);
-            pageAndSizeData.setSize(5);
+            pageAndSizeData.setSize(10);
         }
         return pageAndSizeData;
     }

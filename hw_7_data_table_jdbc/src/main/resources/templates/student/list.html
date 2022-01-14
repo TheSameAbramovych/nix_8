@@ -4,9 +4,16 @@
     <title>Students</title>
     <div th:replace="fragments/header :: header"></div>
 </head>
-<body class="card-body container">
-<div th:switch="${students}">
-    <h2 th:case="null">No users found!</h2>
+<body>
+<nav style="padding: .4rem 1rem" class="navbar navbar-dark bg-dark">
+    <form class="container-fluid justify-content-start">
+        <a style="margin: 0 .2rem" th:href="@{/students}" class="btn btn-primary">Students list</a>
+        <a style="margin: 0 .2rem" th:href="@{/groups}" class="btn btn-primary">Groups list</a>
+    </form>
+</nav>
+</div>
+<div style="background-color: white" class="container card-body" th:switch="${students}">
+    <h2 th:case="null">No students found!</h2>
 
     <div th:case="*">
         <h2>Students</h2>
@@ -24,7 +31,7 @@
                                 <i th:if="${sortData.getOrder().equals('ASC')}" class="fa fa-sort-asc float-right sort"
                                    aria-hidden="true"></i>
                             </th:block>
-                            </th:block>
+                        </th>
                         <th onclick="sort('first_name')">
                             <span>First name</span>
                             <th:block th:if="${sortData.getSort().equals('first_name')}">

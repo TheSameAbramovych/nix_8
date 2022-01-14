@@ -5,17 +5,20 @@
     <div th:replace="fragments/header :: header"></div>
 </head>
 <body class="card-body container">
-<div class="row">
-    <th:block th:replace="fragments/error :: body"></th:block>
-</div>
-<form action="#" th:action="@{/groups/create}" th:object="${group}" method="post" class="card-body">
-    <div class="input-group">
-        <input type="text" th:field="*{name}" id="name" aria-label="name" class="form-control" placeholder="Name">
-        <input type="number" th:field="*{headman}" id="headman" aria-label="headman" class="form-control"
-               placeholder="Headman">
-        <input class="btn btn-primary" type="submit" value="Create Group">
+<div style="background-color: white">
 
+    <div class="row">
+        <th:block th:replace="fragments/error :: body"></th:block>
     </div>
-</form>
+    <form action="#" th:action="@{/groups/create}" th:object="${group}" method="post" class="card-body">
+        <div class="input-group">
+            <input type="text" th:field="*{name}" id="name" aria-label="name" class="form-control" placeholder="Name">
+            <input type="number" th:field="*{headman}" id="headman" aria-label="headman" class="form-control"
+                   placeholder="Headman">
+            <input class="btn btn-primary" type="submit" value="Create Group">
+
+        </div>
+    </form>
+</div>
 </body>
 </html>
