@@ -10,6 +10,7 @@ import ua.com.alevel.hw_8_9_jpa_hibernate.controller.dto.PageAndSizeData;
 import ua.com.alevel.hw_8_9_jpa_hibernate.controller.dto.SortData;
 import ua.com.alevel.hw_8_9_jpa_hibernate.controller.dto.StudentGroupIds;
 import ua.com.alevel.hw_8_9_jpa_hibernate.entity.Group;
+import ua.com.alevel.hw_8_9_jpa_hibernate.entity.Student;
 import ua.com.alevel.hw_8_9_jpa_hibernate.service.GroupService;
 import ua.com.alevel.hw_8_9_jpa_hibernate.service.StudentService;
 
@@ -80,17 +81,19 @@ public class GroupController extends BaseController {
 
     @GetMapping("/{id}/students/delete/{student_id}")
     public String deleteStudentFromGroup(@PathVariable("id") Long id, @PathVariable("student_id") Long studentId, @RequestHeader("Referer") String referer) {
-        groupService.deleteStudent(id, studentId);
+        Student student = studentService.findById(studentId);
+        groupService.deleteStudent(id, student);
         return "redirect:" + referer;
     }
 
     @PostMapping("/students/add")
     public String addStudentToGroup(@Valid StudentGroupIds ids, BindingResult br, Model model) {
+        Student student = studentService.findById(ids.getStudentId());
         if (br.hasErrors()) {
             showError(br, model);
             return detailsGroup(ids.getGroupId(), model);
         }
-        groupService.addStudent(ids.getGroupId(), ids.getStudentId());
+        groupService.addStudent(ids.getGroupId(), student);
         return detailsGroup(ids.getGroupId(), model);
     }
 

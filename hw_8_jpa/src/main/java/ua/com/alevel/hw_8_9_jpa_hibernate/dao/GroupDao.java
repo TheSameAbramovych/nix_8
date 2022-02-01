@@ -25,9 +25,5 @@ public interface GroupDao extends BaseDao<Group> {
 
     DataTableResponse<Group> findByStudent(Long studentId);
 
-    void deleteStudent(Long id, Long studentId);
-
-    void addStudent(Long groupId, Long studentId);
-
     void addHeadman(Long headmanId);
 }

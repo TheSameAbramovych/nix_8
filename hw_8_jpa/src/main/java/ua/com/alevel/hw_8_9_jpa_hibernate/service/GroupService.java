@@ -6,6 +6,7 @@ import ua.com.alevel.hw_8_9_jpa_hibernate.controller.dto.PageAndSizeData;
 import ua.com.alevel.hw_8_9_jpa_hibernate.controller.dto.SortData;
 import ua.com.alevel.hw_8_9_jpa_hibernate.dao.GroupDao;
 import ua.com.alevel.hw_8_9_jpa_hibernate.entity.Group;
+import ua.com.alevel.hw_8_9_jpa_hibernate.entity.Student;
 import ua.com.alevel.hw_8_9_jpa_hibernate.persistence.DataTableRequest;
 
 import java.util.List;
@@ -46,12 +47,16 @@ public class GroupService implements CrudService<Group, Long> {
         return groupDao.findByStudent(id).getItems();
     }
 
-    public void deleteStudent(Long id, Long studentId) {
-        groupDao.deleteStudent(id, studentId);
+    public void deleteStudent(Long id, Student student) {
+        Group group = groupDao.findById(id);
+        group.getStudents().remove(student);
+        groupDao.update(group);
     }
 
-    public void addStudent(Long id, Long studentId) {
-        groupDao.addStudent(id, studentId);
+    public void addStudent(Long id, Student student) {
+        Group group = groupDao.findById(id);
+        group.getStudents().add(student);
+        groupDao.update(group);
     }
 
     public List<Group> findAll(PageAndSizeData pageAndSizeData, SortData sortData) {

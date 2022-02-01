@@ -97,11 +97,12 @@ public class StudentController extends BaseController {
 
     @PostMapping("/group/add")
     public String addStudentToGroup(@Valid StudentGroupIds ids, BindingResult br, @RequestHeader("Referer") String referer, Model model) {
+        Student student = studentService.findById(ids.getStudentId());
         if (br.hasErrors()) {
             showError(br, model);
             return detailsStudent(ids.getStudentId(), model);
         }
-        groupService.addStudent(ids.getGroupId(), ids.getStudentId());
+        groupService.addStudent(ids.getGroupId(), student);
         return detailsStudent(ids.getStudentId(), model);
     }
 }

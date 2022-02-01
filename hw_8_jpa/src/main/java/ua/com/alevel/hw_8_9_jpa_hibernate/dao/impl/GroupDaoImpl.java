@@ -107,16 +107,6 @@ public class GroupDaoImpl implements GroupDao {
     }
 
     @Override
-    public void deleteStudent(Long id, Long studentId) {
-
-    }
-
-    @Override
-    public void addStudent(Long id, Long studentId) {
-
-    }
-
-    @Override
     public void addHeadman(Long headmanId) {
 
     }

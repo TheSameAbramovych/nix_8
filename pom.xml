@@ -31,23 +31,6 @@
         <module>module_2</module>
         <module>hw_7_data_table_jdbc</module>
         <module>hw_8_9_jpa_hibernate</module>
-
-        <module>demo_web</module>
-        <module>dinix_framework</module>
-        <module>rest_sql</module>
-        <module>unit_3_start_oop</module>
-        <module>unit_4_next_oop</module>
-        <module>unit_5_about_object</module>
-        <module>unit_6_di_oop</module>
-        <module>unit_7_tests_logs</module>
-        <module>unit_8_collection</module>
-        <module>unit_9_generics</module>
-        <module>unit_10_ionio</module>
-        <module>unit_11_start_jdbc</module>
-        <module>unit_12_web_jdbc</module>
-        <module>unit_12_web_data_table_jdbc</module>
-        <module>unit_13_web_jpa</module>
-        <module>unit_14_repo</module>
     </modules>
 
     <packaging>pom</packaging>
