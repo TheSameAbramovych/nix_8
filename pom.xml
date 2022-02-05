@@ -30,7 +30,8 @@
         <module>hw_6_calendar</module>
         <module>module_2</module>
         <module>hw_7_data_table_jdbc</module>
-        <module>hw_8_9_jpa_hibernate</module>
+        <module>hw_8_jpa</module>
+        <module>module_3</module>
     </modules>
 
     <packaging>pom</packaging>
