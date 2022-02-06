@@ -1,13 +1,13 @@
-package ua.com.alevel.hw_8_jpa.service;
+package ua.com.alevel.hw_9_hibernate.service;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import ua.com.alevel.hw_8_jpa.controller.dto.PageAndSizeData;
-import ua.com.alevel.hw_8_jpa.controller.dto.SortData;
-import ua.com.alevel.hw_8_jpa.dao.GroupDao;
-import ua.com.alevel.hw_8_jpa.entity.Group;
-import ua.com.alevel.hw_8_jpa.entity.Student;
-import ua.com.alevel.hw_8_jpa.persistence.DataTableRequest;
+import ua.com.alevel.hw_9_hibernate.controller.dto.PageAndSizeData;
+import ua.com.alevel.hw_9_hibernate.controller.dto.SortData;
+import ua.com.alevel.hw_9_hibernate.dao.GroupDao;
+import ua.com.alevel.hw_9_hibernate.entity.Group;
+import ua.com.alevel.hw_9_hibernate.entity.Student;
+import ua.com.alevel.hw_9_hibernate.persistence.DataTableRequest;
 
 import java.util.List;
 import java.util.Set;

@@ -1,4 +1,4 @@
-package ua.com.alevel.hw_8_jpa.controller;
+package ua.com.alevel.hw_9_hibernate.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -6,14 +6,14 @@ import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
-import ua.com.alevel.hw_8_jpa.controller.dto.CreateGroupRequest;
-import ua.com.alevel.hw_8_jpa.controller.dto.PageAndSizeData;
-import ua.com.alevel.hw_8_jpa.controller.dto.SortData;
-import ua.com.alevel.hw_8_jpa.controller.dto.StudentGroupIds;
-import ua.com.alevel.hw_8_jpa.entity.Group;
-import ua.com.alevel.hw_8_jpa.entity.Student;
-import ua.com.alevel.hw_8_jpa.service.GroupService;
-import ua.com.alevel.hw_8_jpa.service.StudentService;
+import ua.com.alevel.hw_9_hibernate.controller.dto.CreateGroupRequest;
+import ua.com.alevel.hw_9_hibernate.controller.dto.PageAndSizeData;
+import ua.com.alevel.hw_9_hibernate.controller.dto.SortData;
+import ua.com.alevel.hw_9_hibernate.controller.dto.StudentGroupIds;
+import ua.com.alevel.hw_9_hibernate.entity.Group;
+import ua.com.alevel.hw_9_hibernate.entity.Student;
+import ua.com.alevel.hw_9_hibernate.service.GroupService;
+import ua.com.alevel.hw_9_hibernate.service.StudentService;
 
 import javax.validation.Valid;
 import java.util.List;

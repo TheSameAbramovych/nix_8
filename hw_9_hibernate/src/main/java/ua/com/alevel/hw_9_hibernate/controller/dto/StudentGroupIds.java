@@ -1,4 +1,4 @@
-package ua.com.alevel.hw_8_jpa.controller.dto;
+package ua.com.alevel.hw_9_hibernate.controller.dto;
 
 import lombok.Data;
 

@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <title>Create student</title>
+    <div th:replace="fragments/header :: header"></div>
+</head>
+<body class="card-body container">
+<div style="background-color: white">
+    <div class="row">
+        <th:block th:replace="fragments/error :: body"></th:block>
+    </div>
+    <form action="#" th:action="@{/students/create}" th:object="${student}" method="post" class="card-body">
+        <div class="input-group">
+            <input type="text" aria-label="First name" class="form-control" th:field="*{firstName}" id="firstName"
+                   placeholder="First Name">
+            <input type="text" aria-label="Last name" class="form-control" th:field="*{lastName}" id="lastName"
+                   placeholder="Last Name">
+            <input type="text" aria-label="Email" class="form-control" th:field="*{email}" id="email"
+                   placeholder="Email">
+            <input type="number" aria-label="Age" class="form-control" th:field="*{age}" id="age" placeholder="Age">
+            <input class="btn btn-primary" type="submit" value="Create Student">
+        </div>
+    </form>
+</div>
+</body>
+</html>
+
