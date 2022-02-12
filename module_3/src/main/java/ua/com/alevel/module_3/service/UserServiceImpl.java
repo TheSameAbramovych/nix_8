@@ -46,9 +46,7 @@ public class UserServiceImpl implements UserService {
         List<Wallet> wallets = user.getWallets().stream().toList();
         if (!user.isActive()) {
             wallets.forEach(wallet -> wallet.setClose(true));
-            for (Wallet wallet : wallets) {
-                walletDao.update(wallet);
-            }
+            wallets.forEach(walletDao::update);
         }
     }
 
