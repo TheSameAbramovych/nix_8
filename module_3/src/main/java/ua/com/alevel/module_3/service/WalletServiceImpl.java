@@ -23,6 +23,9 @@ public class WalletServiceImpl implements WalletService {
 
     @Override
     public Wallet create(User user, Currency currency) {
+        if (!user.isActive()) {
+            throw new CloseUserException(user.getId().toString());
+        }
         Wallet wallet = new Wallet();
         wallet.setAmount(BigDecimal.ZERO);
         wallet.setCurrency(currency);
