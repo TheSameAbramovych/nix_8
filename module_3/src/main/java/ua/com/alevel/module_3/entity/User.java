@@ -15,4 +15,5 @@ public class User extends BaseEntity {
     private String lastName;
     @OneToMany(mappedBy = "user")
     private Set<Wallet> wallets;
+    private boolean active;
 }

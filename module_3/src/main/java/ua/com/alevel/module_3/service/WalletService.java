@@ -10,4 +10,6 @@ public interface WalletService {
     Wallet create(User user, Currency currency);
 
     void update(Wallet wallet);
+
+    void changeStatusWallet(String numberWallet);
 }

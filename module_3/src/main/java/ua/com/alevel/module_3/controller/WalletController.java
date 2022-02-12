@@ -4,6 +4,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import ua.com.alevel.module_3.controller.dto.WalletRequest;
 import ua.com.alevel.module_3.entity.Wallet;
 import ua.com.alevel.module_3.service.UserService;
@@ -27,10 +28,9 @@ public class WalletController extends BaseController {
     }
 
     @PostMapping("/disable/{number}")
-    public String disableWallet(@PathVariable String number) {
+    public String disableWallet(@PathVariable String number, RedirectAttributes redirectAttributes) {
         Wallet wallet = walletService.findByNumber(number);
-        wallet.setClose(!wallet.isClose());
-        walletService.update(wallet);
+        errorHandling(() -> walletService.changeStatusWallet(number), redirectAttributes);
         return "redirect:/users/details/" + wallet.getUser().getId();
     }
 

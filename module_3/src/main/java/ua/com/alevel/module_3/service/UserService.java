@@ -11,7 +11,7 @@ public interface UserService {
 
     void update(User entity);
 
-    void delete(Long id);
+    void changeStatus(Long id);
 
     User findById(Long id);
 

@@ -5,7 +5,9 @@ import ua.com.alevel.module_3.controller.dto.PageAndSizeData;
 import ua.com.alevel.module_3.controller.dto.SortData;
 import ua.com.alevel.module_3.dao.LimitedRequest;
 import ua.com.alevel.module_3.dao.UserDao;
+import ua.com.alevel.module_3.dao.WalletDao;
 import ua.com.alevel.module_3.entity.User;
+import ua.com.alevel.module_3.entity.Wallet;
 import ua.com.alevel.module_3.exception.EmptyNameException;
 import ua.com.alevel.module_3.exception.IncorrectNameException;
 
@@ -14,9 +16,11 @@ import java.util.List;
 @Service
 public class UserServiceImpl implements UserService {
     private final UserDao userDao;
+    private final WalletDao walletDao;
 
-    public UserServiceImpl(UserDao userDao) {
+    public UserServiceImpl(UserDao userDao, WalletDao walletDao) {
         this.userDao = userDao;
+        this.walletDao = walletDao;
     }
 
     public void create(User entity) {
@@ -35,8 +39,17 @@ public class UserServiceImpl implements UserService {
         userDao.update(entity);
     }
 
-    public void delete(Long id) {
-        userDao.delete(id);
+    public void changeStatus(Long id) {
+        User user = userDao.findById(id);
+        user.setActive(!user.isActive());
+        userDao.update(user);
+        List<Wallet> wallets = user.getWallets().stream().toList();
+        if (!user.isActive()) {
+            wallets.forEach(wallet -> wallet.setClose(true));
+            for (Wallet wallet : wallets) {
+                walletDao.update(wallet);
+            }
+        }
     }
 
     public User findById(Long id) {

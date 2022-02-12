@@ -6,6 +6,7 @@ import ua.com.alevel.module_3.dao.WalletDao;
 import ua.com.alevel.module_3.entity.Currency;
 import ua.com.alevel.module_3.entity.User;
 import ua.com.alevel.module_3.entity.Wallet;
+import ua.com.alevel.module_3.exception.CloseUserException;
 
 import java.math.BigDecimal;
 import java.util.UUID;
@@ -34,6 +35,15 @@ public class WalletServiceImpl implements WalletService {
 
     @Override
     public void update(Wallet wallet) {
+        walletDao.update(wallet);
+    }
+
+    public void changeStatusWallet(String numberWallet) {
+        Wallet wallet = walletDao.findByNumber(numberWallet);
+        if (!wallet.getUser().isActive()) {
+            throw new CloseUserException(wallet.getUser().getId().toString());
+        }
+        wallet.setClose(!wallet.isClose());
         walletDao.update(wallet);
     }
 }

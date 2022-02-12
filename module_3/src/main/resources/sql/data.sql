@@ -1,9 +1,9 @@
-insert into module_3.user (id, firstName, lastName)
-values (1, 'Bohdan', 'Abramovych'),
-       (2, 'Iegor', 'Funtusov'),
-       (3, 'Roman', 'Abramovych'),
-       (4, 'Jeffrey', 'Bezos'),
-       (5, 'Elon', 'Musk');
+insert into module_3.user (id, firstName, lastName, active)
+values (1, 'Bohdan', 'Abramovych', true),
+       (2, 'Iegor', 'Funtusov', true),
+       (3, 'Roman', 'Abramovych', true),
+       (4, 'Jeffrey', 'Bezos', true),
+       (5, 'Elon', 'Musk', true);
 
 insert into module_3.wallet (number, amount, close, currency, user_id)
 values ('16d88b90-0db2-4c2e-89b6-2a634a0c2a0a', 0.00, false, 1, 5),

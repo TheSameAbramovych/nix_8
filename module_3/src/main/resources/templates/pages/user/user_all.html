@@ -13,7 +13,7 @@
             <th th:replace="fragments/sorted_column :: sorted_column (name='Id', sortName='id')">
             <th th:replace="fragments/sorted_column :: sorted_column (name='First name', sortName='firstName')">
             <th th:replace="fragments/sorted_column :: sorted_column (name='Last name', sortName='lastName')">
-            <th>Action</th>
+            <th class="col-lg-1">Action</th>
         </tr>
         </thead>
         <tbody>
@@ -21,10 +21,23 @@
             <td th:text="${user.id}" class="col-sm-1"></td>
             <td th:text="${user.firstName}" class="col-md-1"></td>
             <td th:text="${user.lastName}" class="col-md-1"></td>
-            <td class="col-md-1">
-                <a th:href="@{/users/details/{id}(id=${user.id})}"
-                   class="btn btn-outline-primary">Details</a>
-                <a th:href="@{/users/delete/{id}(id=${user.id})}" class="btn btn-danger">Delete</a>
+            <td class="input-group sm-3" th:switch="${user.active}">
+                <div class="btn-group" role="group" aria-label="Basic example">
+                    <form th:action="@{/users/status/{id}(id=${user.id})}"
+                          th:case="true" method="post">
+                        <button type="submit"
+                                class="btn btn-outline-success">Active
+                        </button>
+                    </form>
+                    <form th:action="@{/users/status/{id}(id=${user.id})}"
+                          th:case="false" method="post">
+                        <button type="submit"
+                                class="btn btn-outline-warning">Close
+                        </button>
+                    </form>
+                    <a th:href="@{/users/details/{id}(id=${user.id})}"
+                       class="btn btn-outline-primary">Details</a>
+                </div>
             </td>
         </tr>
         </tbody>

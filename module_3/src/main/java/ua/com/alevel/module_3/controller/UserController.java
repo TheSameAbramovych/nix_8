@@ -60,9 +60,9 @@ public class UserController extends BaseController {
         return "pages/user/user_details";
     }
 
-    @GetMapping("/delete/{id}")
-    public String deleteUser(@PathVariable Long id) {
-        userService.delete(id);
+    @PostMapping("/status/{id}")
+    public String changeStatusUser(@PathVariable Long id, RedirectAttributes redirectAttributes) {
+        errorHandling(() -> userService.changeStatus(id), redirectAttributes);
         return "redirect:/users";
     }
 }
