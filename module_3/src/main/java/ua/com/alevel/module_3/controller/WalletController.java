@@ -22,8 +22,8 @@ public class WalletController extends BaseController {
     }
 
     @PostMapping("/create")
-    public String createWallet(WalletRequest walletRequest) {
-        walletService.create(userService.findById(walletRequest.getUserId()), walletRequest.getCurrency());
+    public String createWallet(WalletRequest walletRequest, RedirectAttributes redirectAttributes) {
+        errorHandling(() -> walletService.create(userService.findById(walletRequest.getUserId()), walletRequest.getCurrency()), redirectAttributes);
         return "redirect:/users/details/" + walletRequest.getUserId();
     }
 
