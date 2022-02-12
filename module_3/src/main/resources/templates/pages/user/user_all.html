@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org"
+      th:replace="layout :: layout('Users', ~{}, ~{::body})">
+<head>
+    <title>Users</title>
+</head>
+<body>
+<div>
+    <table class="table table-bordered">
+        <thead class="table-dark">
+        <tr>
+            <th th:replace="fragments/sorted_column :: sorted_column (name='Id', sortName='id')">
+            <th th:replace="fragments/sorted_column :: sorted_column (name='First name', sortName='firstName')">
+            <th th:replace="fragments/sorted_column :: sorted_column (name='Last name', sortName='lastName')">
+            <th>Action</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="user : ${users}">
+            <td th:text="${user.id}" class="col-sm-1"></td>
+            <td th:text="${user.firstName}" class="col-md-1"></td>
+            <td th:text="${user.lastName}" class="col-md-1"></td>
+            <td class="col-md-1">
+                <a th:href="@{/users/details/{id}(id=${user.id})}"
+                   class="btn btn-outline-primary">Details</a>
+                <a th:href="@{/users/delete/{id}(id=${user.id})}" class="btn btn-danger">Delete</a>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+    <div class="row">
+        <form action="#" th:action="@{/users/create}" th:object="${user}" method="post" class="card-body">
+            <div class="input-group">
+                <input type="text" th:field="*{firstName}" id="firstName" class="form-control" placeholder="First name">
+                <input type="text" th:field="*{lastName}" id="lastName" class="form-control" placeholder="Last name">
+                <input class="btn btn-primary" type="submit" value="Create user">
+            </div>
+        </form>
+    </div>
+    <div th:replace="fragments/pagination "></div>
+</div>
+</body>
+</html>

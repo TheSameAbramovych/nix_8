@@ -1,0 +1,17 @@
+
+body {
+    background: url(https://images.wallpaperscraft.ru/image/single/gory_zakat_pejzazh_147439_3840x2094.jpg) no-repeat center center fixed;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+}
+
+.wallet-status {
+    border-radius: 0;
+    width: 100%;
+}
+
+.borderless td, .borderless th {
+    border: none;
+}

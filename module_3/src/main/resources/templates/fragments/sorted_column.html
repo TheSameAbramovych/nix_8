@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<body>
+<th:block th:fragment="sorted_column (name, sortName)">
+    <th th:data-name="${sortName}"
+        onclick="sort(this.getAttribute('data-name'));">
+        <span th:text="${name}"></span>
+        <th:block th:if="${sortData.getSort().equals(sortName)}">
+            <i th:if="${sortData.getOrder().equals('DESC')}"
+               class="fa fa-sort-desc float-right sort"
+               aria-hidden="true"></i>
+            <i th:if="${sortData.getOrder().equals('ASC')}" class="fa fa-sort-asc float-right sort"
+               aria-hidden="true"></i>
+        </th:block>
+    </th>
+</th:block>
+</body>
+</html>

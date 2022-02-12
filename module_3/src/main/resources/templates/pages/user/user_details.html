@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org"
+      th:replace="layout :: layout('User details', ~{::navigate}, ~{::content})">
+<div th:replace="fragments/error :: body"></div>
+<head>
+    <title>User details</title>
+</head>
+<body>
+<div>
+    <div th:fragment="navigate" style="display: inline-flex; float: right">
+        <div>
+            <form action="#" th:action="@{/wallet/create}" th:object="${wallet}" style="margin: 0 0.7rem;"
+                  method="post">
+                <div class="input-group sm-3">
+                    <select id="currency" th:field="*{currency}" name="currency"
+                            class="form-select form-select-sm"
+                            aria-label=".form-select-sm example">
+                        <option th:each="currency : ${T(ua.com.alevel.module_3.entity.Currency).values()}"
+                                th:value="${currency}" th:text="${currency}"></option>
+                    </select>
+                    <input hidden type="number" name="userId" th:field="*{userId}" th:value="${user.id}">
+                    <input class="btn btn-primary" type="submit" value="Create">
+                </div>
+            </form>
+        </div>
+        <a th:href="@{/users}" class="btn btn-primary">Back</a>
+    </div>
+    <div th:fragment="content" class="container-fluid">
+        <table class="table borderless">
+            <thead class="table-dark">
+            <tr>
+                <th>Full name</th>
+                <th>Wallets</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr>
+                <td th:text="${user.firstName + ' ' + user.lastName}"></td>
+                <td>
+                    <table>
+                        <table class="table borderless">
+                            <tbody>
+                            <tr th:each="userWallet : ${user.wallets}">
+                                <td th:text="${userWallet.number}"></td>
+                                <td th:text="${userWallet.currency}"></td>
+                                <td th:text="${userWallet.amount}"></td>
+                                <td th:switch="${userWallet.close}">
+                                    <form th:action="@{/wallet/disable/{number}(number=${userWallet.number})}"
+                                          th:case="false" method="post">
+                                        <button type="submit"
+                                                class="btn btn-outline-success wallet-status">Active
+                                        </button>
+                                    </form>
+                                    <form th:action="@{/wallet/disable/{number}(number=${userWallet.number})}"
+                                          th:case="true" method="post">
+                                        <button type="submit"
+                                                class="btn btn-outline-warning wallet-status">Close
+                                        </button>
+                                    </form>
+                                </td>
+                            </tr>
+                            </tbody>
+                        </table>
+                    </table>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+        <div class="col-md">
+            <form action="#" th:action="@{/transaction/transfer}" th:object="${transaction}" method="post"
+                  class="card-body">
+                <div class="input-group mb-3">
+                    <select id="wallet" th:field="*{wallet}" name="wallet" class="form-select form-select-sm"
+                            aria-label=".form-select-sm example">
+                        <option th:value="${userWallet.number}" th:text="${userWallet.number}"
+                                th:each="userWallet:${user.getWallets()}"></option>
+                    </select>
+                    <input type="number" class="form-control" th:field="*{amount}" id="amount" placeholder="Amount">
+                    <input type="text" class="form-control" th:field="*{targetWalletNumber}" id="targetWalletNumber"
+                           placeholder="Target Number Wallet">
+                    <input class="btn btn-primary" type="submit" value="Send">
+                </div>
+            </form>
+        </div>
+        <div class="col-md">
+            <form action="#" th:action="@{/transaction/report}" th:object="${report}" method="post" class="card-body">
+                <div class="input-group sm-3">
+                    <select id="period" th:field="*{period}" name="currency"
+                            class="form-select form-select-sm" aria-label=".form-select-sm example">
+                        <option th:each="period : ${T(ua.com.alevel.module_3.controller.dto.ReportPeriod).values()}"
+                                th:value="${period}" th:text="${period.name}"></option>
+                    </select>
+                    <select name="wallet" class="form-select form-select-sm" aria-label=".form-select-sm example">
+                        <option value="">All wallets</option>
+                        <option th:each="userWallet : ${user.wallets}"
+                                th:value="${userWallet.number}" th:text="${userWallet.number}"></option>
+                    </select>
+                    <input hidden type="number" name="userId" th:field="*{userId}" th:value="${user.id}">
+                    <input class="btn btn-primary" type="submit" value="Generate csv">
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+</body>
+</html>
+

@@ -1,0 +1,11 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+</head>
+<body>
+<div th:fragment="error">
+    <div th:text="${error}" th:each="error : ${errors}" class="alert alert-danger" role="alert"></div>
+</div>
+
+</body>
+</html>

@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<body>
+<div th:fragment="pagination">
+    <div style="display: inline-flex; float: right">
+        <div class="dropdown" style="margin: 0 1rem">
+            <button class="btn btn-primary dropdown-toggle" type="button"
+                    data-bs-toggle="dropdown" aria-expanded="false" th:text="${pageAndSize.size}">
+            </button>
+            <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+                <li><a class="dropdown-item"
+                       th:href="@{?page={page}&size={size}(page=${pageAndSize.getPage},size=${5})}">5</a>
+                </li>
+                <li><a class="dropdown-item"
+                       th:href="@{?page={page}&size={size}(page=${pageAndSize.getPage},size=${10})}">10</a>
+                </li>
+                <li><a class="dropdown-item"
+                       th:href="@{?page={page}&size={size}(page=${pageAndSize.getPage},size=${50})}">50</a>
+                </li>
+            </ul>
+        </div>
+        <ul class="pagination">
+            <li th:class="${pageAndSize.getPage() != 1} ? 'page-item' : 'page-item disabled'">
+                <a class="page-link"
+                   th:href="@{?page={page}&size={size}(page=${1},size=${pageAndSize.size})}"><<</a>
+            </li>
+            <li th:class="${pageAndSize.getPage() != 1} ? 'page-item' : 'page-item disabled'">
+                <a class="page-link"
+                   th:href="@{?page={page}&size={size}(page=${pageAndSize.getPage()-1},size=${pageAndSize.size})}"><</a>
+            </li>
+            <li class='page-item active'>
+                <a class="page-link" th:text="${pageAndSize.getPage()}"
+                   th:href="@{?page={page}&size={size}(page=${pageAndSize.getPage},size=${pageAndSize.size})}"></a>
+            </li>
+            <li th:class="${pageAndSize.getPage() != pageAndSize.getPageCount()} ? 'page-item' : 'page-item disabled'">
+                <a class="page-link"
+                   th:href="@{?page={page}&size={size}(page=${pageAndSize.getPage()+1},size=${pageAndSize.size})}">></a>
+            </li>
+            <li th:class="${pageAndSize.getPage() != pageAndSize.getPageCount()} ? 'page-item' : 'page-item disabled'">
+                <a class="page-link"
+                   th:href="@{?page={page}&size={size}(page=${pageAndSize.getPageCount()},size=${pageAndSize.size})}">>></a>
+            </li>
+        </ul>
+    </div>
+</div>
+
+</body>
+</html>

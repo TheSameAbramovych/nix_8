@@ -1,5 +1,7 @@
 package ua.com.alevel.module_3.dao;
 
+import java.util.List;
+
 public interface BaseDao<E, I> {
 
     void create(E entity);
@@ -8,11 +10,9 @@ public interface BaseDao<E, I> {
 
     void delete(Long id);
 
-    boolean existById(I id);
-
     E findById(I id);
 
-//    List<E> findAll(DataTableRequest request);
+    List<E> findAll(LimitedRequest request);
 
     long count();
 }
