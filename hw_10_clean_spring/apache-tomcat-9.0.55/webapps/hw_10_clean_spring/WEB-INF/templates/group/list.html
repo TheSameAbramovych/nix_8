@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Groups</title>
+    <div th:replace="fragments/header :: header"></div>
+
+</head>
+
+<body>
+<div style="background-color: rgba(255, 255, 255, 0.4); border-radius: 10px" class="container card-body"
+     th:switch="${groups}">
+    <h2 th:case="null">No groups found!</h2>
+    <div th:case="*">
+        <div>
+            <div style="display: inline-flex; float: right">
+                <a style="margin: 0 .2rem" th:href="@{/students}" class="btn btn-primary">Students list</a>
+                <a style="margin: 0 .2rem" th:href="@{/groups}" class="btn btn-primary">Groups list</a>
+            </div>
+            <h2>Groups</h2>
+        </div>
+        <div class="container-fluid">
+            <div class="row">
+                <table class="table table-bordered">
+                    <thead class="table-dark">
+                    <tr>
+                        <th onclick="sort('id')">
+                            <span>Id</span>
+                            <th:block th:if="${sortData.getSort().equals('id')}">
+                                <i th:if="${sortData.getOrder().equals('DESC')}"
+                                   class="fa fa-sort-desc float-right sort"
+                                   aria-hidden="true"></i>
+                                <i th:if="${sortData.getOrder().equals('ASC')}"
+                                   class="fa fa-sort-asc float-right sort"
+                                   aria-hidden="true"></i>
+                            </th:block>
+                        <th onclick="sort('name')">
+                            <span>Name</span>
+                            <th:block th:if="${sortData.getSort().equals('name')}">
+                                <i th:if="${sortData.getOrder().equals('DESC')}"
+                                   class="fa fa-sort-desc float-right sort"
+                                   aria-hidden="true"></i>
+                                <i th:if="${sortData.getOrder().equals('ASC')}"
+                                   class="fa fa-sort-asc float-right sort"
+                                   aria-hidden="true"></i>
+                            </th:block>
+                        <th>Action</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr class="table-active">
+                    </tr>
+                    <tr th:each="group : ${groups}">
+                        <td th:text="${group.id}"></td>
+                        <td th:text="${group.name}"></td>
+                        <td>
+                            <a th:href="@{/groups/details/{id}(id=${group.id})}"
+                               class="btn btn-outline-primary">Details</a>
+                            <a th:href="@{/groups/delete/{id}(id=${group.id})}"
+                               class="btn btn-danger">Delete</a>
+                        </td>
+                    </tr>
+
+                    </tbody>
+                </table>
+
+                <div>
+                    <a class="btn btn-primary" href="/groups/create" role="button">Create Group</a>
+                    <div style="display: inline-flex; float: right">
+                        <div class="dropdown" style="margin: 0 1rem">
+                            <button class="btn btn-primary dropdown-toggle" type="button"
+                                    data-bs-toggle="dropdown" aria-expanded="false" th:text="${pageAndSize.size}">
+                            </button>
+                            <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+                                <li><a class="dropdown-item"
+                                       th:href="@{/groups?page={page}&size={size}(page=${pageAndSize.getPage},size=${5})}">5</a>
+                                </li>
+                                <li><a class="dropdown-item"
+                                       th:href="@{/groups?page={page}&size={size}(page=${pageAndSize.getPage},size=${10})}">10</a>
+                                </li>
+                                <li><a class="dropdown-item"
+                                       th:href="@{/groups?page={page}&size={size}(page=${pageAndSize.getPage},size=${50})}">50</a>
+                                </li>
+                            </ul>
+                        </div>
+                        <ul class="pagination">
+                            <li th:class="${pageAndSize.getPage() != 1} ? 'page-item' : 'page-item disabled'">
+                                <a class="page-link"
+                                   th:href="@{/groups?page={page}&size={size}(page=${1},size=${pageAndSize.size})}"><<</a>
+                            </li>
+                            <li th:class="${pageAndSize.getPage() != 1} ? 'page-item' : 'page-item disabled'">
+                                <a class="page-link"
+                                   th:href="@{/groups?page={page}&size={size}(page=${pageAndSize.getPage()-1},size=${pageAndSize.size})}"><</a>
+                            </li>
+                            <li class='page-item active'>
+                                <a class="page-link" th:text="${pageAndSize.getPage()}"
+                                   th:href="@{/groups?page={page}&size={size}(page=${pageAndSize.getPage},size=${pageAndSize.size})}"></a>
+                            </li>
+                            <li th:class="${pageAndSize.getPage() != pageCount} ? 'page-item' : 'page-item disabled'">
+                                <a class="page-link"
+                                   th:href="@{/groups?page={page}&size={size}(page=${pageAndSize.getPage()+1},size=${pageAndSize.size})}">></a>
+                            </li>
+                            <li th:class="${pageAndSize.getPage() != pageCount} ? 'page-item' : 'page-item disabled'">
+                                <a class="page-link"
+                                   th:href="@{/groups?page={page}&size={size}(page=${pageCount},size=${pageAndSize.size})}">>></a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+</body>
+</html>
+

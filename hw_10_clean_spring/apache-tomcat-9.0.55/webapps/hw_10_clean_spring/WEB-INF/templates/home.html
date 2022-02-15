@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <title>Home Page</title>
+    <div th:replace="fragments/header :: header"></div>
+</head>
+<body class="container-fluid bg-transparent">
+<div class="row col-sm-3 " style="margin: 1vh auto">
+    <a th:href="@{/students}" class="btn btn-dark">Students list</a>
+</div>
+<div class="row col-sm-3" style="margin: 1vh auto">
+    <a th:href="@{/groups}" class="btn btn-dark ">Groups list</a>
+</div>
+</body>
+</html>

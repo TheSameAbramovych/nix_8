@@ -1,0 +1,7 @@
+<persistence xmlns="http://java.sun.com/xml/ns/persistence"
+             version="1.0">
+    <persistence-unit name="clean-spring">
+        <class>ua.com.alevel.hw_10_clean_spring.entity.Group</class>
+        <class>ua.com.alevel.hw_10_clean_spring.entity.Student</class>
+    </persistence-unit>
+</persistence>
